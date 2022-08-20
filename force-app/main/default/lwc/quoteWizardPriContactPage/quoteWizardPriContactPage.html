@@ -1,0 +1,103 @@
+<template>
+    <lightning-card>
+
+        <!-- insert spinner -->
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading" size="small" variant="brand"></lightning-spinner>
+        </template>
+
+        <lightning-layout vertical-align="center" class="x-large">
+            <div class="slds-size_2-of-3 slds-p-around_medium">
+                <lightning-layout-item padding="around-small">
+                    <!--
+                    <br />
+                    <c-utils-look-up child-object-api-name="Opportunity" target-field-api-name="ContactId"
+                        onvalueselected={handleValueSelcted} disabled={lookUpDisabled}></c-utils-look-up>
+                    The selected record Id is:- {selectedRecordId}
+                    <br />-->
+
+                    <template if:true={conId}>
+                        <ul class="slds-list_horizontal" style="display: flex;flex-wrap: wrap;">
+                            <template for:each={additionalcontacts} for:item="additionalcon">
+                                <div key={additionalcon}>
+                                    <li style="display: inline-block;">
+                                        <lightning-badge key={additionalcon.Id} label={additionalcon.FirstName}>
+                                        </lightning-badge>
+                                    </li>
+
+                                </div>
+
+                            </template>
+                        </ul>
+                    </template>
+
+                    <lightning-input type="text" value={qPriFName} name="qPriFName" onchange={handleChange}
+                        label="Additional Contact First Name:" disabled={inputDisabled}></lightning-input>
+                    <lightning-input type="text" value={qPriLName} name="qPriLName" onchange={handleChange}
+                        label="Additional Contact Last Name:" disabled={inputDisabled}></lightning-input>
+                    <lightning-input type="text" value={qPriMob} name="qPriMob" onchange={handleChange}
+                        label="Additional Contact Mobile:" disabled={inputDisabled}></lightning-input>
+                    <lightning-input type="text" value={qPriEmail} name="qPriEmail" onchange={handleChange}
+                        label="Additional Contact Email:" disabled={inputDisabled}></lightning-input>
+                </lightning-layout-item>
+                <br />
+
+
+
+            </div>
+
+
+            <div class="slds-col">
+
+
+                <div class="slds-p-around_medium lgc-bg">
+                    <ul id="myUL">
+                        <li><span class="caret">Quote Summary</span>
+                            <ul class="nested">
+                                <li class="name">{sport}</li>
+                                <li class="name">{group}</li>
+                                <li class="name">{gender}</li>
+                                <li class="name">{homeGround}</li>
+                                <li class="name">{discount}</li>
+
+                            </ul>
+                        </li>
+
+                        <li><span class="caret">Customer Summary</span>
+                            <ul class="nested">
+                                <li class="name">{qCompany}</li>
+                                <li class="name">{qFName}</li>
+                                <li class="name">{qLName}</li>
+                                <li class="name">{qMob}</li>
+                                <li class="name">{qEmail}</li>
+
+                            </ul>
+                        </li>
+
+
+                        <li><span class="caret">Additional Contact Summary</span>
+                            <ul class="nested">
+                                <li class="name">{qPriFName}</li>
+                                <li class="name">{qPriLName}</li>
+                                <li class="name">{qPriMob}</li>
+                                <li class="name">{qPriEmail}</li>
+
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="slds-p-around_medium slds-text-align_center">
+                        <lightning-button class="slds-m-right_small" variant="brand" type="submit" label="Previous"
+                            onclick={handlePriPreviousClick}></lightning-button>
+                        <lightning-button class="slds-m-right_small" variant="brand" type="submit" label="Submit"
+                            onclick={handlePriSubmitClick}></lightning-button>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </lightning-layout>
+    </lightning-card>
+</template>

@@ -1,0 +1,26 @@
+<template>
+    <lightning-layout horizontal-align="center">
+
+        <lightning-layout-item padding="around-small">
+            <lightning-combobox name="projectselection" label="Project" value={value} placeholder="Select a project"
+                options={projectOptions} onchange={handleProjectChange} required></lightning-combobox>
+        </lightning-layout-item>
+
+
+        <lightning-layout-item padding="around-small">
+            <lightning-combobox class="example" name="buildingselection" label="Building" value={value} placeholder="Select a building"
+                options={buildingOptions} onchange={handleBuildingChange} disabled={flgObjCb}></lightning-combobox>
+        </lightning-layout-item>
+
+        <lightning-layout-item padding="around-small">
+            <lightning-combobox class="example exampleext" name="lotselection" label="Lot" value={value} placeholder="Select a lot"
+                options={lotOptions} onchange={handleLotChange} disabled={flgObjCb}></lightning-combobox>
+        </lightning-layout-item>
+
+
+    </lightning-layout>
+
+    <div class="propselect">
+
+    </div>
+</template>

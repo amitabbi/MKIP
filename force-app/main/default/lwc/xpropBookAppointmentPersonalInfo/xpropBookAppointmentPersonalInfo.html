@@ -1,0 +1,36 @@
+<template>
+
+         <!-- insert spinner -->
+         <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+        </template>
+
+
+    <div class="bapp">
+    <!--<lightning-card title="Contact Information" icon-name="standard:lead" padding="around-small">-->
+        <lightning-icon icon-name="standard:lead" alternative-text="Approved" title="Approved"></lightning-icon> <b class="title slds-m-around_small">Contact Information</b>
+        <lightning-input type="text" value={lFName} name="lFName" onchange={handleChange}
+            label="First Name"></lightning-input>
+        <lightning-input type="text" value={lLName} name="lLName" onchange={handleChange}
+            label="Last Name"></lightning-input>
+            <lightning-input type="text" value={lCompany} name="lCompany" onchange={handleChange}
+            label="Company"></lightning-input>
+            <lightning-input type="email" value={lEmail} name="lEmail" onchange={handleChange}
+            label="Email"></lightning-input>
+            <lightning-input type="phone" value={lMobile} name="lMobile" onchange={handleChange}
+            label="Mobile Phone"></lightning-input>
+        <lightning-textarea name="tDescription" label="Message" value={tDescription} onchange={handleChange}></lightning-textarea>
+        
+            <!--<lightning-button class="slds-m-right_small" variant="brand" onclick={handleBookAppPICancel} label="Cancel">
+        </lightning-button>
+            <lightning-button class="slds-m-right_small" variant="brand" label="Proceed" onclick={handleBookAppPIProceed}>
+            </lightning-button>-->
+            <div class="slds-align_absolute-center slds-p-around_small">
+                <a href="" class="slds-p-around_small slds-m-around_small" onclick={handleBookAppPICancel}>Cancel</a>
+                <a href="" class="slds-p-around_small slds-m-around_small" onclick={handleBookAppPIProceed}>Proceed</a>
+            </div>
+
+        
+    <!--</lightning-card>-->
+</div>
+</template>

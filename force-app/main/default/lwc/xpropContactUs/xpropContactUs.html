@@ -1,0 +1,85 @@
+<template>
+
+    <div class="container">
+        <div style="text-align:center">
+          <h1 class="header1">Contact Us</h1>
+          <p>Leave us a message:</p>
+        </div>
+        <div class="row">
+          <div class="column">
+            <lightning-map map-markers={mapMarkers} zoom-level={zoomLevel} class="slds-align_absolute-center slds-m-around_small"></lightning-map>
+          </div>
+          <div class="column">
+
+            <lightning-card title="Enquiry" icon-name="standard:lead">
+                <br>
+                  <lightning-record-edit-form
+                object-api-name="Lead"
+                onsubmit={handleSubmit}
+                onsuccess={handleSuccess}
+                density="compact" 
+              >
+                <lightning-messages></lightning-messages>
+                    
+                <lightning-input-field
+                field-name="Salutation"
+              ></lightning-input-field>
+                <lightning-input-field
+                field-name="FirstName"
+              ></lightning-input-field>
+              <lightning-input-field
+              field-name="LastName"
+            ></lightning-input-field>
+
+            <lightning-input-field
+                field-name="Company"
+              ></lightning-input-field>
+
+                <lightning-input-field
+                field-name="MobilePhone"
+              ></lightning-input-field>
+
+              <lightning-input-field
+                field-name="Email"
+              ></lightning-input-field>
+
+                    <lightning-input-field
+                      field-name="Description"
+                    ></lightning-input-field>
+      
+                  
+                <br>
+          
+                <lightning-layout horizontal-align="center">
+                  <div class="slds-m-right_small">
+                    <lightning-button
+                      class="slds-m-right_small"
+                      variant="brand"
+                      onclick={handleReset}
+                      label="Cancel"
+                    ></lightning-button>
+                    <lightning-button
+                      class="slds-m-right_small"
+                      variant="brand"
+                      type="submit"
+                      label="Submit"
+                    ></lightning-button>
+                  </div>
+                </lightning-layout>
+              </lightning-record-edit-form>
+                
+              <template if:true={showSuccess}>
+                <div class="info">
+                    <p><strong>Info!</strong> You enquiiry has been submitted. Someone will contact you within 1-2 days.</p>
+                </div>
+              </template>
+
+            </lightning-card>
+            
+          </div>
+        </div>
+      </div>
+
+
+    
+</template>

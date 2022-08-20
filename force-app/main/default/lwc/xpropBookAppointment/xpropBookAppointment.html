@@ -1,0 +1,105 @@
+<template>
+
+             <!-- insert spinner -->
+             <template if:true={isLoading}>
+                <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+            </template>
+<template if:false={showConfirm}>
+    <lightning-accordion active-section-name={activeAccord} onsectiontoggle={handleToggleSection}>
+        <lightning-accordion-section name="A" label="Select an agent">
+    <lightning-layout multiple-rows horizontal-align="center">
+        <template if:true={projectagents}>
+            <!--<ul class="slds-list_horizontal">-->
+                <template for:each={projectagents} for:item="proagent">
+                    <lightning-layout-item key={proagent.Id} padding="around-small" size="12" small-device-size="6"
+                large-device-size="3" medium-device-size="4">
+                    <lightning-card style="width: 400px;padding-left: 5px;" class="slds-p-around_small" title={proagent.Contact__r.Name} key={proagent}>
+                        <!--<br />Status: <br />Due Date: <br /><br />-->
+                        <lightning-layout-item>
+                        <img src={proagent.Contact__r.Agent_Picture__c} class="tile slds-p-around_small" alt="Agent Picture" >
+                    </lightning-layout-item>
+                        <lightning-layout-item>
+                            Profile Details<br/>
+                        <a href="" onclick={showAvailClickHandler} id={proagent.Agent_User__c} class="link slds-p-around_small">Show Avalaibility</a>
+                    </lightning-layout-item>
+                    </lightning-card>
+                </lightning-layout-item>
+                </template>
+            <!--</ul>-->
+        </template>
+
+    </lightning-layout>
+</lightning-accordion-section>
+
+<lightning-accordion-section name="B" label="Make a booking">
+
+</lightning-accordion-section>
+
+
+</lightning-accordion>
+
+
+    <template if:true={showAvail}>
+        <div>
+            <lightning-layout multiple-rows horizontal-align="center">
+            <lightning-layout-item>
+            <!--<lightning-combobox name="dateselection" label="Select a date" value={value} placeholder="Select a date"
+                options={dateOptions} onchange={handleDateChange} disabled={flgObjCb}></lightning-combobox>-->
+                <lightning-input type="date" name="dateselection" date-style="short" value={value} onchange={handleDateChange} label="Enter a date" ></lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+            <template if:true={showAvailTimeSlots}>
+                <ul class="slds-list_horizontal slds-p-around_small">
+                <template for:each={timeOptions} for:item="timeOption">
+                    <div class="timeslots slds-p-around_small slds-align_absolute-center" key={timeOption.Id}>
+                        <a href="" onclick={timeSlotClickHandler} name={timeOption.Name} id={timeOption.Slot}>{timeOption.Name}</a>
+                </div>
+                    
+                </template>
+            </ul>
+        </template>
+                
+    <!--<lightning-datatable key-field="Id" data={filterdTimeSlots} columns={columns}
+    onrowaction={handleRowAction}>
+</lightning-datatable>-->
+
+</div>
+</template>
+
+
+
+<template if:true={isWeekend}>
+    <div class="warning">
+        <p><strong>Warning!</strong> You have selected a date that falls on weekend (Saturday/Sunday). Please select a date that falls on a weekday.</p>
+    </div>
+    </template>
+
+    <template if:true={isDateInPast}>
+        <div class="warning">
+            <p><strong>Warning!</strong> You have selected a date that falls in the past. Please select a date in the future and falls on a weekday.</p>
+        </div>
+    </template>
+
+    <template if:true={showTimeSlotConfirm}>
+        <template if:true={isNotWeekend}>
+            <div class="info">
+                <p><strong>Info!</strong> You are booking an appointment with {placeholder} for {selectedDate} at {selectedTimeSlot}.
+                Please click on the Confirm button to proceed.</p>
+            </div>
+            </template>
+<div class="timeslotbuttons slds-align_absolute-center slds-p-around_small">
+    <a href="" class="slds-p-around_small slds-m-around_small" onclick={backClickHandler}>Cancel</a>
+    <a href="" class="slds-p-around_small slds-m-around_small" onclick={confirmClickHandler}>Confirm</a>
+</div>
+</template>
+
+</template>
+
+<template if:true={showConfirm}>
+    <a href="" class="slds-p-around_small slds-m-around_small" onclick={backConfirmPageClickHandler}>Back to property profiles</a>
+<b style="font-size: 18px;" class="slds-align_absolute-center slds-m-around_xx-large">Thank you for making an appointment. <br> Check your email for confirmed appointment details.
+</b>
+</template>
+
+
+</template>

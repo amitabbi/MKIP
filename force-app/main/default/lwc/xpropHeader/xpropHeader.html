@@ -1,0 +1,35 @@
+<template>
+    <div class="lightcard">
+        
+    <div class="slds-grid">
+        <div class="slds-col colalign">
+            <template if:true={showFirstDiv}>
+        <lightning-icon icon-name="utility:company"></lightning-icon>
+    </template>
+        </div>
+        <div class="slds-col colalign">
+            <template if:true={showFirstDiv}>
+                
+        <p><b>Project Name:</b> {projectName}</p>
+        <p><b>Building Name:</b> {buildingName}</p>
+        <p><b>Lot Name:</b> {selectedLotName}</p>
+    </template>
+    </div>
+    
+    <div class="slds-col colalign">
+        <template if:true={showFirstDiv}>
+        <p><b>Floor:</b> {lotFloor}</p>
+        <p><b>Bedrooms:</b> {lotBedrooms}</p>
+        <p><b>Bathrooms:</b> {lotBathrooms}</p>
+    </template>
+    </div>
+    <div class="slds-col colalign">
+        <template if:true={showFirstDiv}>
+        <p><b>Lot Status:</b> {lotStatus}</p>
+        <p><b>Lot Sold:</b> {lotSold}</p>
+        <p><b>Price:</b> ${lotPrice}</p>
+    </template>
+    </div>
+</div>
+</div>
+</template>

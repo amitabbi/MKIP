@@ -1,0 +1,18 @@
+<template>
+    <lightning-card>
+        <template if:false={homeGround}>
+            <h1 style="text-align:left;font-size: 2em;font-weight: bold;">No home ground selected :)</h1>
+    </template>
+
+        <template if:true={mcgClicked}>
+        <img src={mcgURL} class="home">
+    </template>
+    <template if:true={marvelClicked}>
+        <img src={marvelURL} class="home">
+    </template>
+    <template if:true={rodLaverClicked}>
+        <img src={rodLaverURL} class="home">
+    </template>
+    </lightning-card>
+    
+</template>

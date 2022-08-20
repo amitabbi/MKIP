@@ -1,0 +1,45 @@
+<template>
+<template if:true={showPI}>
+    <template if:true={preliminspection}>
+    <div class="divbox">
+        <h1 class="heading1">Checklist</h1>
+        <hr>
+        <br />
+    </div>
+
+    <div class="fbkscroll">
+    <lightning-layout multiple-rows horizontal-align="space">
+        <lightning-layout-item size="6" class="layoutitem">
+                <b>Landscaping observations</b><lightning-textarea class="txarea" name="input1" value={tglLands} onchange={txChangeHandler}></lightning-textarea>
+            <br />
+            <!--<lightning-input class="txarea" type="toggle" label="Driveway and Entrance observations" checked={toggleHandler}
+                name="tglDriv" message-toggle-active="" message-toggle-inactive=""></lightning-input>-->
+                <b>Driveway and Entrance observations</b><lightning-textarea class="txarea" name="input2" value={tglDriv} onchange={txChangeHandler}></lightning-textarea>
+            <br />
+            <b>Exterior Observations</b><lightning-textarea class="txarea" name="input3" value={tglExt} onchange={txChangeHandler}></lightning-textarea>
+        <br />
+            <b>Windows, Doors, and Wood Trim Observations</b><lightning-textarea class="txarea" name="input4" value={tglWindows} onchange={txChangeHandler}></lightning-textarea>
+        <br />
+            <a href="" class="submitbutt" onclick={prelimInspectSubmitHandler}>Submit</a>
+        </lightning-layout-item>
+
+
+        <lightning-layout-item size="6" class="layoutitem">
+                <b>Kitchen Observations</b><lightning-textarea class="txarea" name="input5" value={tglKit} onchange={txChangeHandler}></lightning-textarea>
+            <br />
+                <b>Bathrooms Observations</b><lightning-textarea class="txarea" name="input6" value={tglBath} onchange={txChangeHandler}></lightning-textarea>
+                <br />
+                <b>Structure Observations</b><lightning-textarea class="txarea" name="input7" value={tglStruct} onchange={txChangeHandler}></lightning-textarea>
+            <br />
+                <b>Heating and Cooling Observations</b><lightning-textarea class="txarea" name="input8" value={tglHeatCool} onchange={txChangeHandler}></lightning-textarea>
+            <br />
+        </lightning-layout-item>
+
+    
+
+    </lightning-layout>
+
+</div>
+</template>
+</template>
+</template>

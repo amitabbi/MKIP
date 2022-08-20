@@ -1,0 +1,50 @@
+<template>
+  <lightning-card title="Make a selection">
+    <lightning-layout horizontal-align="center">
+      <lightning-layout-item padding="around_small">
+        <lightning-combobox
+          name="objectselection"
+          label="Object"
+          value={value}
+          placeholder="Select Object"
+          options={objOptions}
+          onchange={handleObjectChange}
+          disabled={flgObjCb}
+        ></lightning-combobox>
+      </lightning-layout-item>
+    </lightning-layout>
+  </lightning-card>
+
+  <lightning-card title="Key Records">
+    <template if:true={selectedObj}>
+      <!-- Pagination Buttons-->
+      <lightning-layout>
+        <lightning-layout-item>
+          <lightning-button
+            label="Previous"
+            icon-name="utility:chevronleft"
+            onclick={handlePrevious}
+          ></lightning-button>
+        </lightning-layout-item>
+        <lightning-layout-item flexibility="grow"></lightning-layout-item>
+        <lightning-layout-item>
+          <lightning-button
+            label="Next"
+            icon-name="utility:chevronright"
+            icon-position="right"
+            onclick={handleNext}
+          ></lightning-button>
+        </lightning-layout-item>
+      </lightning-layout>
+      <!-- Pagination Buttons-->
+
+      <lightning-datatable
+        key-field="Id"
+        data={conRes}
+        columns={columns}
+        onrowaction={handleRowAction}
+      >
+      </lightning-datatable>
+    </template>
+  </lightning-card>
+</template>

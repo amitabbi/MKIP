@@ -1,0 +1,35 @@
+<template>
+    <lightning-card title="Your Web Enquiries" icon-name="standard:announcement">
+        
+            
+        <template for:each={agentWebLeads} for:item="agentlead">
+            <lightning-layout multiple-rows key={agentlead.Id}>
+            <lightning-layout-item size="6">
+        <div class="slds-m-around_medium" key={agentlead.Id}>
+            <p style="font-size:16px;"><b>Project:</b> {agentlead.Project__r.Name} <br/>
+            <b>Prospect Name:</b> {agentlead.Name} <br/>
+            <b>Mobile:</b> {agentlead.MobilePhone} <br/>
+            <b>Email:</b> {agentlead.Email} <br/>
+            <b>Description:</b> {agentlead.Description} <br/></p>
+        </div>
+    </lightning-layout-item>
+    <p style="width:fit-content;">
+        <lightning-input type="toggle" onchange={toggleChange}></lightning-input>
+    </p>
+    <lightning-layout-item class="slds-align_absolute-center" size="4" key={agentlead.Id}>
+       
+        <b class="slds-text-heading_large">{v_TotalAgentLeadRecords}</b>
+        </lightning-layout-item>
+    </lightning-layout>
+        <div class="slds-align_absolute-center" key={agentlead.Id}>
+            <lightning-button-icon icon-name="utility:left" size="medium" onclick={handlePrevious}
+                alternative-text="View More" class="st"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:right" size="medium" onclick={handleNext}
+                alternative-text="View More" class="st"></lightning-button-icon>
+            </div>
+
+    </template>
+
+    </lightning-card>
+    
+</template>

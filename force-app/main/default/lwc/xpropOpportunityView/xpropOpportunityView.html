@@ -1,0 +1,76 @@
+<template>
+
+    <!-- Horizontal scroll menu that shows all opportunities for the selected lot -->
+    <div class="scrollmenu">
+        <template if:true={showOpps}>
+            <template if:true={lotOpportunities}>
+                <ul class="slds-list_horizontal">
+                    <template for:each={lotOpportunities} for:item="opp">
+                        <div style="width: 200px;border-radius: 25px;border: 3px solid purple;margin-left: 5px;" title={opp.Name}
+                            key={opp}>
+                            <b class="cardtitle">{opp.Name}</b><br /><b class="cardcontent">Stage:</b>
+                            {opp.StageName}<br />
+
+                            <b class="cardcontent">Close Date:</b>
+                            <lightning-formatted-date-time value={opp.CloseDate}></lightning-formatted-date-time>
+                            <a>
+                                <p slot="footer" style="text-align: center;" onclick={showOppHandler} id={opp.Id}>
+                                    Show</p>
+                            </a>
+                        </div>
+                    </template>
+                    <!-- add empty list item to indicate the end of the scroll menu-->
+                    <div>
+                        <li class="block"></li>
+                    </div>
+                </ul>
+            </template>
+        </template>
+    </div>
+
+
+
+    <!-- Record edit form to display the selected opportunity -->
+    <lightning-layout multiple-rows horizontal-align="space">
+        <lightning-layout-item size="8" padding="around-small">
+            <template if:true={showOpp}>
+                <lightning-card title="Opportunity" icon-name="standard:opportunity">
+                <lightning-record-edit-form record-id={selectedOppRecId} object-api-name="Opportunity"
+                    onsubmit={handleSubmit} onsuccess={handleSuccess} density="compact">
+
+                    <lightning-messages></lightning-messages>
+
+                    <lightning-output-field field-name="Name"></lightning-output-field>
+                    <lightning-output-field field-name="AccountId"></lightning-output-field>
+                    <lightning-output-field field-name="LeadSource"></lightning-output-field>
+                    <lightning-input-field field-name="Amount"></lightning-input-field>
+                    <lightning-input-field field-name="CloseDate"></lightning-input-field>
+                    <lightning-input-field field-name="StageName"></lightning-input-field>
+                    <div class="center">
+                    <!--<lightning-button class="slds-m-right_small" variant="brand" onclick={handleReset} label="Cancel">
+                    </lightning-button>-->
+                    <lightning-button class="slds-m-right_small" variant="brand" type="submit" label="Update">
+                    </lightning-button>
+                </div>
+                
+
+
+                </lightning-record-edit-form>
+            </lightning-card>
+            </template>
+        </lightning-layout-item>
+
+
+        <!-- File upload -->
+        <lightning-layout-item size="4" padding="around-small">
+            <template if:true={showOpp}>
+                <lightning-card title="Upload File" icon-name="action:upload">
+                <lightning-file-upload name="fileUploader" accept={acceptedFormats}
+                    record-id={selectedOppRecId} onuploadfinished={handleUploadFinished} multiple>
+                </lightning-file-upload>
+            </lightning-card>
+            </template>
+        </lightning-layout-item>
+    </lightning-layout>
+
+</template>

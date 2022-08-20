@@ -1,0 +1,15 @@
+<template>
+    <lightning-card>
+    <div class="slds-p-around_medium">
+    <lightning-layout>
+        <lightning-layout-item size="9" class="slds-m-right_medium">
+            <lightning-input label="Message:" name="inputMessage" onchange={inputMessageHandler}></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="3" class="slds-m-right_medium">
+            <lightning-button label="Message:" icon-name="utility:send" onclick={handlePublish}></lightning-button>
+        </lightning-layout-item>
+
+    </lightning-layout>
+</div>
+</lightning-card>
+</template>

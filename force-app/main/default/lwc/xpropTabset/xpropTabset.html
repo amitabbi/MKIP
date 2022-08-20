@@ -1,0 +1,80 @@
+<template>
+
+    <c-xprop-combo-view oncapturelotinfo={captureLotInfo} oncaptureprojectinfo={captureProjectInfo}
+        oncapturebuildinginfo={captureBuildingInfo}></c-xprop-combo-view>
+
+    <lightning-tabset variant="vertical" class="mtabset">
+        <lightning-tab label="Agent View" onactive={handleSalesViewActive}>
+            <template if:true={showSalesView}>
+                <c-xprop-sales lot-id={lotId} lot-name={lotName} project-changed={projectChanged}
+                    building-changed={buildingChanged}></c-xprop-sales>
+            </template>
+        </lightning-tab>
+        <lightning-tab label="Appointment View">
+            <template if:true={showManagementView}>
+                <c-xprop-appointment-view lot-id={lotId} lot-name={lotName} project-changed={projectChanged}
+                    building-changed={buildingChanged}></c-xprop-appointment-view>
+                </template>
+        </lightning-tab>
+        <lightning-tab label="Management View">
+            <template if:true={showManagementView}>
+                <c-xprop-management-view lot-id={lotId} lot-name={lotName} project-changed={projectChanged}
+                    building-changed={buildingChanged} project-id={projectId} project-name={projectName}></c-xprop-management-view>
+            </template>
+        </lightning-tab>
+        <lightning-tab label="Opportunity View">
+            <template if:true={showOppsView}>
+                <c-xprop-opportunity-view lot-id={lotId} lot-name={lotName} project-changed={projectChanged}
+                    building-changed={buildingChanged}></c-xprop-opportunity-view>
+            </template>
+        </lightning-tab>
+        <lightning-tab label="Activity View">
+            <template if:true={showActView}>
+                <c-xprop-activity-view lot-id={lotId} lot-name={lotName} project-changed={projectChanged}
+                    building-changed={buildingChanged}></c-xprop-activity-view>
+            </template>
+        </lightning-tab>
+        <lightning-tab label="Service Contract View">
+            <template if:true={showServContractView}>
+                <c-xprop-service-contract-view lot-id={lotId} lot-name={lotName} project-changed={projectChanged}
+                    building-changed={buildingChanged}></c-xprop-service-contract-view>
+            </template>
+        </lightning-tab>
+        <lightning-tab label="Variations View">
+            <template if:true={showServVariationsView}>
+                <c-xprop-variations lot-id={lotId} lot-name={lotName} project-changed={projectChanged}
+                building-changed={buildingChanged}></c-xprop-variations>
+            </template>
+        </lightning-tab>
+        <lightning-tab label="Preliminary Inspection View">
+            <template if:true={showPrelimInspectView}>
+          <c-xprop-prelim-inspect-view lot-id={lotId} lot-name={lotName} project-changed={projectChanged}
+          building-changed={buildingChanged}></c-xprop-prelim-inspect-view>
+        </template>
+        </lightning-tab>
+        <lightning-tab label="Final Inspection View">
+            <template if:true={showFinalInspectView}>
+                <c-xprop-final-inspect-view lot-id={lotId} lot-name={lotName} project-changed={projectChanged}
+                building-changed={buildingChanged}></c-xprop-final-inspect-view>
+              </template>
+        </lightning-tab>
+        <lightning-tab label="Agent Commission View">
+            <template if:true={showAgentCommissionView}>
+                <c-xprop-agent-commission lot-id={lotId} lot-name={lotName} project-changed={projectChanged}
+                building-changed={buildingChanged}></c-xprop-agent-commission>
+            </template>
+        </lightning-tab>
+        <lightning-tab label="Completion View">
+            <template if:true={showAgentCompletionView}>
+                <c-xprop-completion-view lot-id={lotId} lot-name={lotName} project-changed={projectChanged}
+                building-changed={buildingChanged}></c-xprop-completion-view>
+            </template>
+        </lightning-tab>
+        <lightning-tab label="Service Management View">
+            <template if:true={showServiceManagementView}>
+                <c-xprop-service-management-view lot-id={lotId} lot-name={lotName} project-changed={projectChanged}
+                building-changed={buildingChanged}></c-xprop-service-management-view>
+            </template>
+        </lightning-tab>
+    </lightning-tabset>
+</template>

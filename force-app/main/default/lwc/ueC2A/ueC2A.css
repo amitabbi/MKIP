@@ -1,0 +1,9 @@
+.glo {
+    background-color: white;
+}
+
+
+
+.cardstyle:active { /* working */
+    color: rgb(219, 79, 79);
+  }

@@ -1,0 +1,9 @@
+<aura:component  implements="forceCommunity:availableForAllPageTypes,force:hasRecordId,flexipage:availableForAllPageTypes"
+             access="global">
+    <aura:attribute name="recordId" type="String" />
+    
+    <c:ueC2A aura:id="c2aComp" 
+             onrefreshthiscompo="{!c.handleRefreshThisCompo}"
+             recordId="{!v.recordId}"></c:ueC2A>
+
+</aura:component>

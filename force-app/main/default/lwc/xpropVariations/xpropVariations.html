@@ -1,0 +1,48 @@
+<template>
+    <lightning-layout multiple-rows>
+        <div class="vardiv">
+        <lightning-layout-item padding="around-small">
+            <template if:true={showScVars}>
+                <template if:true={scVariations}>
+                <div class="header">
+                    Viewing Variations for {lotName}
+                </div>
+                <div class="datatablebuttons">
+                    <template if:true={showFileUpload}>
+                        <lightning-file-upload name="fileUploader" accept={acceptedFormats} record-id={selectedScRecId}
+                            onuploadfinished={handleUploadFinished} multiple>
+                        </lightning-file-upload>
+                    </template>
+                </div>
+                <lightning-datatable key-field="Id" data={scVariations} columns={columns}
+                    onrowaction={handleRowAction}>
+                </lightning-datatable>
+            </template>
+        </template>
+        </lightning-layout-item>
+    </div>
+
+    <div class="vardiv">
+        <lightning-layout-item padding="around-small">
+            <template if:true={showScVOLI}>
+                <template if:true={scVariationLineItems}>
+                <div class="header">
+                    Viewing Variation Line Items for {lotName}
+                </div>
+                <lightning-datatable key-field="Id" data={scVariationLineItems} columns={volicolumns}
+                    onrowaction={handleRowAction}>
+                </lightning-datatable>
+            </template>
+        </template>
+        <!--<template if:false={showScVOLI}>
+            <b>Click on the button to view Variation Line Items</b>
+        </template>-->
+        <template if:false={scVariationLineItems}>
+            <b>No Variation Line Items Found</b>
+        </template>
+        </lightning-layout-item>
+    </div>
+
+
+        </lightning-layout>
+</template>

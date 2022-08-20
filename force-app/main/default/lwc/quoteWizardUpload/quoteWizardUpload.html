@@ -1,0 +1,27 @@
+<template>
+    <lightning-card title="Upload File">
+        <lightning-accordion class="example-accordion" onsectiontoggle={handleToggleSection} active-section-name={activeSection}>
+
+            <lightning-accordion-section name="A" label="Make an object selection">
+                <lightning-combobox name="objectselection" label="Object" value={value} placeholder="Select Object"
+                    options={objOptions} onchange={handleObjectChange} disabled={flgObjCb}></lightning-combobox>
+
+            </lightning-accordion-section>
+
+            <lightning-accordion-section name="B" label="Make a  record selection">
+                <c-utils-look-up child-object-api-name={targetObjectAPIName} target-field-api-name={targetFieldAPIName}
+                    onvalueselected={handleValueSelcted} disabled={lookUpDisabled} display-reset={displayReset} onselectedrecord={selectedRecordHandler}></c-utils-look-up>
+                The selected record Id is:- {selectedRecordId}
+                <br />
+                <p style="color: darkmagenta;font-size:medium">Press Reset before changing record selection.</p>
+            </lightning-accordion-section>
+
+            <lightning-accordion-section name="C" label="Upload">
+                <lightning-input name="file1" type="file" label="Attachment" multiple accept="image/png, .zip"
+                    onchange={handleFilesChange} disabled={fileDisabled}></lightning-input>
+            </lightning-accordion-section>
+        </lightning-accordion>
+
+
+    </lightning-card>
+</template>

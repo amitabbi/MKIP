@@ -1,0 +1,32 @@
+<template>
+    <lightning-card>
+   
+
+    <div style="height: 400px;">
+        <div>
+            <span class="slds-form-element__label slds-text-title_bold">
+                Total Records: {totalNumberOfRows}</span>
+        </div>
+     
+        <lightning-datatable columns={columns} data={accounts} key-field="Id"
+            onloadmore={loadMoreData} enable-infinite-loading>
+        </lightning-datatable>
+        {loadMoreStatus}
+    </div>
+
+
+    <div style="background-color: lightblue;min-width: 200px;">
+
+        <lightning-layout horizontal-align="centre">
+      
+
+            <lightning-layout-item padding="around-small">
+                Page No {}
+            </lightning-layout-item>
+
+        </lightning-layout>
+
+    </div>
+</lightning-card>
+
+</template>

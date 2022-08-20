@@ -1,0 +1,19 @@
+<template>
+    <lightning-card>
+        <lightning-combobox
+          name="enqByTypes"
+          value={value}
+          label="Enquiry Type"
+          placeholder="All Types"
+          options={enqByTypes} onchange={handleEnqTypeSelect}></lightning-combobox><br>
+
+    <div class="slds-scrollable_y">
+        <lightning-datatable
+        key-field="Id"
+        data={allOpenEnqList}
+        columns={columns}
+        onrowaction={handleRowAction}>
+        </lightning-datatable>
+            </div>
+        </lightning-card>
+</template>

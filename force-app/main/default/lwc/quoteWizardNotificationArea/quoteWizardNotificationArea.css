@@ -1,0 +1,50 @@
+.noti{
+    color: rgb(4, 4, 87);
+    display: inline;
+    font-size: 24px;
+    font-style: italic;
+    text-indent: 40px;
+}
+
+  .label {
+    color: white;
+    padding: 10px;
+  }
+
+  .mydiv{
+    position: relative;
+}
+
+  .danger {background-color: #f44336;
+    position: absolute;
+    top: 0;
+    right: 0;
+} /* Red */
+
+
+
+
+
+
+
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 5px;
+}
+
+
+
+
+
+
+/* Style the counter cards */
+.card {
+  float: left;
+  text-indent: 60px;
+  text-align: center;
+  background-color: #444;
+  color: white;
+}

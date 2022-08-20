@@ -1,0 +1,14 @@
+<template>
+        <!-- insert spinner -->
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+        </template>
+
+        <lightning-card  title={synopsisTitle}>
+            <p class="slds-p-horizontal_small">{synopsisBody}</p>
+        </lightning-card>
+
+
+
+        
+</template>

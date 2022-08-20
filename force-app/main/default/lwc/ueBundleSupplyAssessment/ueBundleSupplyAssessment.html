@@ -1,0 +1,16 @@
+<template>
+
+    
+        <lightning-card title="Inline Edit With Lightning Datatable in LWC">
+                <lightning-datatable key-field="Id" 
+                                     data={data} 
+                                     columns={columns} 
+                                     onsave={handleSave}
+                                     draft-values={saveDraftValues} 
+                                     hide-checkbox-column 
+                                     show-row-number-column>
+                </lightning-datatable>
+        </lightning-card>
+   
+    
+</template>

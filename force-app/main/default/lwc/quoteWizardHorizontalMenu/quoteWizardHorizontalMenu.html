@@ -1,0 +1,171 @@
+<template>
+
+    <!-- insert spinner -->
+    <template if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading" size="small" variant="brand"></lightning-spinner>
+    </template>
+
+    <div class="slds-p-around_small lgc-bg slds-float_left">
+        <lightning-button class="slds-p-around_x-small" variant="brand" icon-name="standard:task" label="Tasks"
+            disabled={tasksDisabled} onclick={tasksClickHandler}></lightning-button>
+        <lightning-button class="slds-p-around_x-small" variant="brand" icon-name="standard:lead" label="Leads"
+            disabled={leadsDisabled} onclick={leadsClickHandler}></lightning-button>
+        <lightning-button class="slds-p-around_x-small" variant="brand" icon-name="standard:case" label="Cases"
+            disabled={casesDisabled} onclick={casesClickHandler}></lightning-button>
+        <br /><br />
+        <div class="slds-p-around_small lgc-bg">
+            <lightning-input label="Typeahead Search" type="Search" onchange={handleKeyChange}
+                class="slds-m-bottom_small" value={searchKey}></lightning-input>
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <div class="scrollmenu">
+
+
+        <!-- Tasks menu-->
+
+        <template if:true={showTasks}>
+            <template if:true={tasks.data}>
+                <ul class="slds-list_horizontal">
+                    <template for:each={tasks.data} for:item="task">
+                        <lightning-card style="width: 400px;padding-left: 5px;" title={task.Subject} key={task}>
+                            <br />Status: {task.Status}<br />Due Date: {task.ActivityDate}<br /><br />
+                            <a>
+                                <p slot="footer" style="text-align: center;" onclick={editTaskHandler} id={task.Id}>Edit
+                                    Task</p>
+                            </a>
+                        </lightning-card>
+                    </template>
+                    <!-- add empty list item to indicate the end of the scroll menu-->
+                    <div>
+                        <li class="block"></li>
+                    </div>
+                </ul>
+            </template>
+        </template>
+
+        <!-- Leads menu-->
+
+        <template if:true={showLeads}>
+            <template if:true={leads}>
+                <ul class="slds-list_horizontal">
+                    <template for:each={leads} for:item="lead">
+                        <lightning-card style="width: 400px;padding-left: 5px;" title={lead.Company} key={lead}>
+                            <br />Name: {lead.Name}<br />Status: {lead.Status}<br /><br />
+                            <a>
+                                <p slot="footer" style="text-align: center;" onclick={editLeadHandler} id={lead.Id}>Edit
+                                    Lead</p>
+                            </a>
+                        </lightning-card>
+                    </template>
+                    <!-- add empty list item to indicate the end of the scroll menu-->
+                    <div>
+                        <li class="block"></li>
+                    </div>
+                </ul>
+            </template>
+        </template>
+
+
+
+        <!-- Cases menu-->
+
+        <template if:true={showCases}>
+            <template if:true={cases}>
+                <ul class="slds-list_horizontal">
+                    <template for:each={cases} for:item="case1">
+                        <lightning-card style="width: 400px;padding-left: 5px;" title={case1.Subject} key={case1}>
+                            <br />Status: {case1.Status}<br />Priority: {case1.Priority}<br /><br />
+                            <a>
+                                <p slot="footer" style="text-align: center;" onclick={editCaseHandler} id={case1.Id}>
+                                    Edit Case</p>
+                            </a>
+                        </lightning-card>
+                    </template>
+                    <!-- add empty list item to indicate the end of the scroll menu-->
+                    <div>
+                        <li class="block"></li>
+                    </div>
+                </ul>
+            </template>
+        </template>
+
+
+        <!-- Type Ahead Results-->
+
+        <template if:true={showTasksTA}>
+            <template if:true={tasksTypeAheadRes.data}>
+                <ul class="slds-list_horizontal">
+                    <template for:each={tasksTypeAheadRes.data} for:item="taskTA">
+                        <lightning-card style="width: 400px;padding-left: 5px;" title={taskTA.Subject} key={taskTA}>
+                            <br />Status: {taskTA.Status}<br />Due Date: {taskTA.ActivityDate}<br /><br />
+                            <a>
+                                <p slot="footer" style="text-align: center;" onclick={editTaskHandler} id={taskTA.Id}>
+                                    Edit Task</p>
+                            </a>
+                        </lightning-card>
+                    </template>
+                    <!-- add empty list item to indicate the end of the scroll menu-->
+                    <div>
+                        <li class="block"></li>
+                    </div>
+                </ul>
+            </template>
+        </template>
+
+
+
+        <template if:true={showLeadsTA}>
+            <template if:true={leadsTypeAheadRes.data}>
+                <ul class="slds-list_horizontal">
+                    <template for:each={leadsTypeAheadRes.data} for:item="leadTA">
+                        <lightning-card style="width: 400px;padding-left: 5px;" title={leadTA.Company} key={leadTA}>
+                            <br />Name: {leadTA.Name}<br />Status: {leadTA.Status}<br /><br />
+                            <a>
+                                <p slot="footer" style="text-align: center;" onclick={editLeadHandler} id={leadTA.Id}>
+                                    Edit Lead</p>
+                            </a>
+                        </lightning-card>
+                    </template>
+                    <!-- add empty list item to indicate the end of the scroll menu-->
+                    <div>
+                        <li class="block"></li>
+                    </div>
+                </ul>
+            </template>
+        </template>
+
+
+        <template if:true={showCasesTA}>
+            <template if:true={casesTypeAheadRes.data}>
+                <ul class="slds-list_horizontal">
+                    <template for:each={casesTypeAheadRes.data} for:item="caseTA">
+                        <lightning-card style="width: 400px;padding-left: 5px;" title={caseTA.Subject} key={caseTA}>
+                            <br />Status: {caseTA.Status}<br />Priority: {caseTA.Priority}<br /><br />
+                            <a>
+                                <p slot="footer" style="text-align: center;" onclick={editCaseHandler} id={caseTA.Id}>
+                                    Edit Case</p>
+                            </a>
+                        </lightning-card>
+                    </template>
+                    <!-- add empty list item to indicate the end of the scroll menu-->
+                    <div>
+                        <li class="block"></li>
+                    </div>
+                </ul>
+            </template>
+        </template>
+
+
+
+
+    </div>
+</template>

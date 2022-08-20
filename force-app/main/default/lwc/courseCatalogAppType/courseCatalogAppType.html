@@ -1,0 +1,48 @@
+<template>
+
+
+    <!-- insert spinner -->
+    <template if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+    </template>
+
+    <lightning-layout multiple-rows horizontal-align="center">
+    <template for:each={appTypes} for:item="apptype">
+        
+        <lightning-layout-item key={apptype.Id} padding="around-small" size="4">
+            <div class="container slds-align_absolute-center">
+               
+<img src={apptype.Application_Type_URL__c} onclick={handleApppTypeClick} name={apptype.Name} class="" alt="Application Type Picture">
+                    </div>
+        </lightning-layout-item>
+        </template>
+
+
+        <!-- Display Application Sub Types-->
+        <template if:true={showSubTypes}>
+        <template for:each={appSubTypesList} for:item="appsubtypelist">
+        
+            <lightning-layout-item key={appsubtypelist.Id} padding="around-small" size="4">
+                <div class="container slds-align_absolute-center">
+    
+                   
+                        <img src={appsubtypelist.Application_Sub_Type_URL__c} class="" onclick={handleApppSubTypeClick} alt="Application Sub Type Picture" >
+    
+                        </div>
+            </lightning-layout-item>
+            </template>
+        </template>
+    </lightning-layout>
+        <template if:true={showSubTypes}>
+        <lightning-layout-item  padding="around-small" size="4">
+            <div class="container slds-align_absolute-right">
+            <lightning-button class="slds-float_right" variant="brand" type="submit" onclick={handleGetStartedClick} label="Get Started">
+            </lightning-button>
+            </div>
+            </lightning-layout-item>
+        </template>
+
+
+        
+    
+</template>

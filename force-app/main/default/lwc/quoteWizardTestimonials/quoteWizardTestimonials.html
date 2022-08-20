@@ -1,0 +1,48 @@
+<template>
+
+    <!-- insert spinner -->
+    <template if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading" size="small" variant="brand"></lightning-spinner>
+    </template>
+
+
+    <div class="container">
+        <div class="slds-grid">
+            <div class="slds-col">
+                <lightning-avatar src="https://www.lightningdesignsystem.com/assets/images/avatar2.jpg">
+                </lightning-avatar>
+            </div>
+
+            <!--<div class="slds-col" style="margin-left: 550px">
+        <lightning-input type="checkbox" label="Viewed" checked={testViewed} onchange={viewedCheckHandler} disabled={checkDisabled}></lightning-input>
+    </div>-->
+
+            <div class="slds-col" style="margin-left: 300px">
+                <lightning-button label="Previous" icon-name="utility:chevronleft" onclick={handlePrevious}>
+                </lightning-button>
+                <lightning-button label="Next" icon-name="utility:chevronright" icon-position="right"
+                    onclick={handleNext}></lightning-button>
+            </div>
+        </div>
+
+
+        <template for:each={testimonial} for:item="test">
+            <div key={test.Id}>
+                <span>Case: {cas} &emsp;Opportunity: {opp}</span>
+
+                <c-five-star-rating read-only="true" value={rating}></c-five-star-rating>
+
+                </span></p><br />
+                <lightning-formatted-rich-text value={feedback}></lightning-formatted-rich-text>
+            </div>
+        </template>
+
+
+        <template if:false={testimonial}>
+            <p>No testimonials found.</p>
+        </template>
+
+    </div>
+
+
+</template>

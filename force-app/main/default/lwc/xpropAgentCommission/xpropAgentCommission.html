@@ -1,0 +1,44 @@
+<template>
+    <template if:true={lotagentcommission}>
+        <div class="barc">
+
+            <!-- First Payment Progress -->
+            <p>
+                <template if:false={firstPaymentMade}>
+                    <lightning-button class="button" label="Make First Payment" onclick={firstPaymentHandler}>
+                    </lightning-button>
+                </template>
+                <template if:true={firstPaymentMade}>
+                    First Payment Processed
+                </template>
+            </p>
+            <lightning-progress-bar value={firstPaymentProgress} size="large"></lightning-progress-bar><br />
+
+            <!-- Second Payment Progress -->
+
+            <p>
+                <template if:false={secondPaymentMade}>
+                    <lightning-button class="button" label="Make Second Payment" onclick={secondPaymentHandler}>
+                    </lightning-button>
+                </template>
+                <template if:true={secondPaymentMade}>
+                    Second Payment Processed
+                </template>
+            </p>
+            <lightning-progress-bar value={secondPaymentProgress} size="large"></lightning-progress-bar><br />
+
+
+            <!-- Third Payment Progress -->
+            <p>
+                <template if:false={thirdPaymentMade}>
+                    <lightning-button class="button" label="Make Final Payment" onclick={thirdPaymentHandler}>
+                    </lightning-button>
+                </template>
+                <template if:true={thirdPaymentMade}>
+                    Third Payment Processed
+                </template>
+            </p>
+            <lightning-progress-bar value={thirdPaymentProgress} size="large"></lightning-progress-bar>
+        </div>
+    </template>
+</template>

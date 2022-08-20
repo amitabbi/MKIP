@@ -1,0 +1,160 @@
+<template>
+
+  <lightning-card>
+
+    <!-- insert spinner -->
+    <template if:true={isLoading}>
+      <lightning-spinner alternative-text="Loading" size="small" variant="brand"></lightning-spinner>
+    </template>
+
+    <div class="slds-grid slds-p-around_medium">
+      <div class="slds-col">
+
+        <lightning-radio-group name="radioGroupSport" label="Sport" options={optionsSport} value={value} type="button"
+          onchange={selectHandler}>
+        </lightning-radio-group>
+
+        <lightning-radio-group name="radioGroup1" label="Age Group" options={options1} value={value} type="button"
+          onchange={selectHandler}>
+        </lightning-radio-group>
+
+
+
+        <lightning-radio-group name="radioGroup2" label="Gender" options={options2} value={value} type="button"
+          onchange={selectHandler}>
+        </lightning-radio-group>
+
+        <lightning-radio-group name="radioGroup3" label="Home Stadium" options={options3} value={value} type="button"
+          onchange={selectHandler}></lightning-radio-group>
+        <lightning-radio-group name="radioGroup4" label="Discount" options={options4} value={value} type="button"
+          onchange={selectHandler}></lightning-radio-group>
+
+
+
+
+
+        <br />
+
+
+
+      </div>
+
+      <div class="slds-col">
+        <template if:true={displayCricket}>
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src={sportImg} alt="Avatar" style="width:300px;height:300px;">
+              </div>
+              <div class="flip-card-back">
+                <br /><br />
+                <p>
+                  3 months access to nets in your local suburb<br />
+
+                  1 ticket for Day 1 of the boxing day test<br />
+
+                  1 ticket for the One-Day International match<br />
+
+                  2 car parks at Wilson Flinders St in Melbourne<br />
+
+                  Valid for 1 year from date of purchase
+                </p><br />
+                <i>Subject to availability at the venue</i>
+              </div>
+            </div>
+          </div>
+        </template>
+
+        <template if:true={displayTennis}>
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src={sportImg} alt="Avatar" style="width:300px;height:300px;">
+              </div>
+              <div class="flip-card-back">
+                <br /><br />
+                <p>
+                  3 months access to courts in your local suburb<br />
+
+                  1 day pass to the Australian Open<br />
+
+                  1 ticket for a league match Australiian Open<br />
+
+                  2 car parks at Wilson next to Rod Laver<br />
+
+                  Valid for 1 year from date of purchase
+                </p><br />
+                <i>Subject to availability at the venue</i>
+              </div>
+            </div>
+          </div>
+        </template>
+
+        <template if:true={displayFooty}>
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src={sportImg} alt="Avatar" style="width:300px;height:300px;">
+              </div>
+              <div class="flip-card-back">
+                <br /><br />
+                <p>
+                  3 months access to afl ground in your local suburb<br />
+
+                  2 tickets for a league match<br />
+
+                  2 car parks at Wilson Flinders St<br />
+
+                  Valid for 1 year from date of purchase
+                </p><br />
+                <i>Subject to availability at the venue</i>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+
+
+      <div class="slds-col">
+        <!--<p class="detail">This membership is for <span class="name">{radioGroup1Val}</span> </p>
+                <br />
+                <p class="detail">The person is a <span class="name">{radioGroup2Val}</span> </p>
+                <br />
+                <p class="detail">Home ground is <span class="name">{radioGroup3Val}</span> </p>
+                <br />
+                <p class="detail">Discount of <span class="name">{radioGroup4Val}</span> has been applied </p>
+                <br />
+                <p class="detail">Total before discount: <span class="name">{totalBeforeDiscount}</span> </p>
+                <br />
+                <p class="detail">Total after discount: <span class="name">{totalAfterDiscount}</span> </p>
+            <lightning-tree class="lgc-bg-tree" items={treeList} header="Summary"></lightning-tree>-->
+        <div class="slds-p-around_medium lgc-bg">
+          <ul id="myUL">
+            <li><span class="caret">Quote Summary</span>
+              <ul class="nested">
+                <li class="name">{radioGroupSportVal}</li>
+                <li class="name">{radioGroup1Val}</li>
+                <li class="name">{radioGroup2Val}</li>
+                <li class="name">{radioGroup3Val}</li>
+                <li class="name">{radioGroup4Val}</li>
+                <li class="name">{totalBeforeDiscount}</li>
+                <li class="name">{totalAfterDiscount}</li>
+
+              </ul>
+            </li>
+          </ul>
+          <div class="slds-p-around_medium slds-text-right">
+            <lightning-button class="slds-m-right_small" variant="brand" type="submit" label="Proceed"
+              onclick={handleQuoteProceedClick} icon-name="action:check"></lightning-button>
+          </div>
+
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </lightning-card>
+
+</template>

@@ -1,0 +1,40 @@
+.glo{
+    background-color: white;
+    height: 900px;
+}
+
+.tile {
+    height: 150px;
+  }
+
+  .link{
+      text-align: right;
+      font-size: 18px;
+  }
+
+
+a:link, a:visited {
+    background-color: purple;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+  }
+
+.info {
+    background-color: #e7f3fe;
+    border-left: 6px solid #2196F3;
+    text-align: center;
+    padding: 14px 25px;
+    font-size: 16px;
+}
+
+.warning {
+    background-color: #ffffcc;
+    border-left: 6px solid #ffeb3b;
+    text-align: center;
+    padding: 14px 25px;
+    font-size: 16px;
+  }

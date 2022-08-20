@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Modify an Existing Record">
+        <lightning-input type="text" value={CEmail} name="CEmail" onchange={handleChange} label="Enter an email address:"></lightning-input>
+        <div class="slds-m-right_small">
+            <lightning-button class="slds-m-right_small" variant="brand" type="submit" label="Search" onclick={handleSearchClick}></lightning-button>
+        </div>
+
+        
+        <lightning-input type="text" value={CPhone} name="CPhone" onchange={handleChange} label="Contact Phone:"></lightning-input>
+        <lightning-button class="slds-m-right_small" variant="brand" type="submit" label="Save" onclick={handleClick}></lightning-button>
+    </lightning-card>
+</template>

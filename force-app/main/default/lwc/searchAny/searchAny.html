@@ -1,0 +1,16 @@
+<template>
+        <lightning-card title="SearchAny" icon-name="custom:custom14">
+            <div class="slds-m-around_medium">
+                <p>Hello, {greet}!</p>
+                <lightning-input label="Name" value={greet} onchange={changeHandler}></lightning-input>
+            </div>
+        </lightning-card>
+
+        <lightning-datatable
+        data={contact.data}
+        columns={columns}
+        key-field="id"
+        onrowselection={getSelectedName}>
+    </lightning-datatable>
+
+    </template>

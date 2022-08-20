@@ -1,0 +1,29 @@
+<template>
+<div class="slds-grid slds-grid_vertical-align-center" style="background-color:white;">
+    <div class="slds-col">
+        <h1 style="text-align:left;font-size: 2em;font-weight: bold;font-style: oblique;">Quotation Wizard - Melbourne Sports</h1>
+            </div>
+        <div class="slds-col">
+            <c-quote-wizard-progress-bar></c-quote-wizard-progress-bar>
+        </div>
+    </div>
+    <div style="background-color:white;border-bottom: 6px solid purple;">
+   
+</div> 
+
+
+
+
+    <div class="step1">
+    <c-quote-wizard-quotation-page onquotepageproceedclicked={quotePageProceedClickHandler}></c-quote-wizard-quotation-page>
+</div>
+
+<div class="step2 slds-hide">
+    <c-quote-wiizard-customer-page onquotecustpagepreviousclicked={quoteCustPagePreviousClickHandler} onquotecustpagenextclicked={quoteCustPageNextClickHandler}></c-quote-wiizard-customer-page>
+</div>
+
+<div class="step3 slds-hide">
+    <c-quote-wizard-pri-contact-page onquotepriconpagepreviousclicked={quotePriConPagePreviousClickHandler}></c-quote-wizard-pri-contact-page>
+</div>
+    
+</template>

@@ -1,0 +1,134 @@
+<template>
+    <!-- Horizontal scroll menu that shows all opportunities for the selected lot -->
+    <div class="scrollmenu">
+        <template if:true={showOpps}>
+            <template if:true={lotOpportunities}>
+                <ul class="slds-list_horizontal">
+                    <template for:each={lotOpportunities} for:item="opp">
+                        <div style="width: 200px;border-radius: 25px;border: 3px solid purple;margin-left: 5px;"
+                            title={opp.Name} key={opp}>
+                            <b class="cardtitle">{opp.Name}</b><br /><b class="cardcontent">Stage:</b>
+                            {opp.StageName}<br />
+
+                            <b class="cardcontent">Close Date:</b>
+                            <lightning-formatted-date-time value={opp.CloseDate}></lightning-formatted-date-time>
+                            <a>
+                                <p slot="footer" style="text-align: center;" onclick={showOppTaskHandler} id={opp.Id}>
+                                    Show Activities</p>
+
+                            </a>
+
+                        </div>
+
+                    </template>
+                    <!-- add empty list item to indicate the end of the scroll menu-->
+                    <div>
+                        <li class="block"></li>
+                    </div>
+                </ul>
+            </template>
+        </template>
+    </div>
+
+
+    <!-- datatable to display tasks/events and actions -->
+
+    <lightning-layout multiple-rows>
+        <lightning-layout-item size="6" padding="around-small">
+            <template if:true={showOppDt}>
+                <div class="header">
+                    Viewing Activities for {oppName}
+                </div>
+                <div class="datatablebuttons">
+                    <!--<lightning-button class="slds-m-right_small" variant="brand" label="Show Tasks"
+                    onclick={showOppTasksHandler}></lightning-button>
+                    <lightning-button class="slds-m-right_small" variant="brand" label="Show Events"
+                    onclick={showOppEventsHandler}></lightning-button>-->
+                    <div class="slds-p-around_small lgc-bg">
+                        <lightning-button-menu alternative-text="Show menu" variant="border">
+                            <lightning-menu-item label="Show Tasks" onclick={showOppTasksHandler}></lightning-menu-item>
+                            <lightning-menu-item label="Show Events" onclick={showOppEventsHandler}>
+                            </lightning-menu-item>
+                        </lightning-button-menu>
+
+                    </div>
+                    <template if:true={showFileUpload}>
+                        <lightning-file-upload name="fileUploader" accept={acceptedFormats} record-id={selectedOppRecId}
+                            onuploadfinished={handleUploadFinished} multiple>
+                        </lightning-file-upload>
+                    </template>
+                </div>
+                <div class="acttable">
+                <lightning-datatable key-field="Id" data={oppActivities} columns={columns}
+                    onrowaction={handleRowAction}>
+                </lightning-datatable>
+            </div>
+            </template>
+        </lightning-layout-item>
+
+
+
+        <lightning-layout-item size="6" padding="around-small">
+            <template if:true={showOppDt}>
+            <div class="header">
+                Create Activities for {oppName}
+            </div>
+            <div class="slds-p-around_small lgc-bg">
+                <lightning-button-menu alternative-text="Show menu" variant="border">
+                    <lightning-menu-item label="New Task" onclick={newOppTaskHandler}></lightning-menu-item>
+                    <lightning-menu-item label="New Event" onclick={newOppEventHandler}>
+                    </lightning-menu-item>
+                </lightning-button-menu>
+                </div>
+        </template>
+            <template if:true={showNewTask}>
+                <lightning-card title="Task" icon-name="standard:task">
+                    <lightning-input type="text" value={tSubject} name="tSubject" onchange={handleChange}
+                        label="Subject"></lightning-input>
+                    <lightning-input type="date" value={tActivityDate} name="tActivityDate" onchange={handleChange}
+                        label="Due Date"></lightning-input>
+                    <lightning-combobox name="tStatus" label="Status" value={value} placeholder="Select status"
+                        options={tStatusOptions} onchange={handleChange}></lightning-combobox>
+                    <lightning-combobox name="tPriority" label="Priority" value={value} placeholder="Select priority"
+                        options={tPriorityOptions} onchange={handleChange}></lightning-combobox>
+                    <lightning-textarea name="tDescription" label="Comments" value={tDescription} onchange={handleChange}></lightning-textarea>
+                    <div class="center">
+                        <lightning-button class="slds-m-right_small" variant="brand" onclick={handleTaskCancel} label="Cancel">
+                    </lightning-button>
+                        <lightning-button class="slds-m-right_small" variant="brand" label="Save" onclick={handleTaskSave}>
+                        </lightning-button>
+                    </div>
+                </lightning-card>
+            </template>
+
+
+
+            <template if:true={showNewEvent}>
+                <lightning-card title="Event" icon-name="standard:event">
+                    <lightning-input type="text" value={eSubject} name="eSubject" onchange={handleChange}
+                        label="Subject"></lightning-input>
+                    <lightning-input type="datetime" value={eStartDateTime} name="eStartDateTime" onchange={handleChange}
+                        label="Start Date Time"></lightning-input>
+                        <lightning-input type="datetime" value={eEndDateTime} name="eEndDateTime" onchange={handleChange}
+                        label="End Date Time"></lightning-input>
+                    <lightning-textarea name="eDescription" label="Comments" value={eDescription} onchange={handleChange}></lightning-textarea>
+                    <div class="center">
+                        <lightning-button class="slds-m-right_small" variant="brand" onclick={handleEventCancel} label="Cancel">
+                    </lightning-button>
+                        <lightning-button class="slds-m-right_small" variant="brand" label="Save" onclick={handleEventSave}>
+                        </lightning-button>
+                    </div>
+                </lightning-card>
+            </template>
+
+
+
+        </lightning-layout-item>
+
+
+    </lightning-layout>
+
+
+
+
+</template>

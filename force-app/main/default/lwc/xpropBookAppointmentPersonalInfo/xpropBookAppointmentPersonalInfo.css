@@ -1,0 +1,18 @@
+.bapp{
+    width: 1000px;
+}
+
+
+a:link, a:visited {
+    background-color: purple;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+  }
+
+  .title{
+    font-size: 18px;
+  }

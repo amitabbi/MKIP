@@ -1,0 +1,12 @@
+.lay{
+    margin-top: 10px;
+}
+
+.st{
+    margin-top: 10px;
+}
+
+.fbkscroll{
+    overflow-y: auto;
+    height: 300px;
+}

@@ -1,0 +1,52 @@
+<template>
+    <template if:true={conRecId}>
+  <lightning-card>
+      <h1 style="text-align:left;font-size: 2em;font-weight: bold;">Details of Contact {conFName} {conLName}</h1>
+      
+        <lightning-record-edit-form
+      record-id={conRecId}
+      object-api-name="Contact"
+      onsubmit={handleSubmit}
+      onsuccess={handleSuccess}
+      density="compact" 
+    >
+      <lightning-messages></lightning-messages>
+      <div class="slds-grid">
+        <div class="slds-col">
+          <lightning-output-field field-name="AccountId"></lightning-output-field>
+          <lightning-input-field
+            field-name="MailingAddress"
+          ></lightning-input-field>
+        </div>
+
+        <div class="slds-col">
+          <span>
+            <lightning-input-field field-name="Email"></lightning-input-field>
+            <lightning-input-field
+              field-name="MobilePhone"
+            ></lightning-input-field>
+          </span>
+        </div>
+      </div>
+
+      <lightning-layout horizontal-align="center">
+        <div class="slds-m-right_small">
+          <lightning-button
+            class="slds-m-right_small"
+            variant="brand"
+            onclick={handleReset}
+            label="Cancel"
+          ></lightning-button>
+          <lightning-button
+            class="slds-m-right_small"
+            variant="brand"
+            type="submit"
+            label="Update"
+          ></lightning-button>
+        </div>
+      </lightning-layout>
+    </lightning-record-edit-form>
+      
+  </lightning-card>
+</template>
+</template>

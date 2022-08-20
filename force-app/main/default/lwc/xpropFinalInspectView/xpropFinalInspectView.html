@@ -1,0 +1,33 @@
+<template>
+    <template if:true={showFinalInsp}>
+
+                <!-- insert spinner -->
+                <template if:true={isLoading}>
+                    <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+                </template>
+                
+     <!-- File upload -->
+     <lightning-layout>
+     <lightning-layout-item size="4" padding="around-small">
+            <lightning-card title="Upload File" icon-name="action:upload">
+            <lightning-file-upload name="fileUploader" accept={acceptedFormats}
+                record-id={lotId} onuploadfinished={handleUploadFinished} multiple>
+            </lightning-file-upload>
+        </lightning-card>
+    </lightning-layout-item>
+
+    
+    <lightning-layout-item size="6" padding="around-small">
+        <div class="slds-clearfix save">
+    <lightning-button variant="brand" label="Save" title="Save" icon-name="standard:endorsement" onclick={saveHandler} class="slds-m-left_x-small slds-float_right slds-align_absolute-center"></lightning-button>
+</div>
+</lightning-layout-item>
+
+
+</lightning-layout>
+
+   <div class="topmain">
+    <textarea id="finalInspTxId" name="finalInspTx" rows="12" cols="137" onchange={txChangeHandler}>{txFinalInspValue}</textarea>
+   </div>
+</template>
+</template>

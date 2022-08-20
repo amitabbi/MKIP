@@ -1,0 +1,33 @@
+<template>
+    <div class="slds-box slds-theme_default">
+            <h1>AI Implementation Lifecycle</h1>
+            <div class="slds-size_3-of-3">
+            
+                <div>
+                <lightning-carousel>
+                    <lightning-carousel-image
+                        src = {implSlide}
+                        header = "First Card"
+                        description = "First card description."
+                        alternative-text = "First card accessible description.">
+                    </lightning-carousel-image>
+                    <lightning-carousel-image
+                    src = {buildSlide}
+                    header = "Second Card"
+                    description = "Second card description."
+                    alternative-text = "Second card accessible description."
+                    href = "https://www.salesforce.com">
+                </lightning-carousel-image>
+                <lightning-carousel-image
+                    src = "https://www.lightningdesignsystem.com/assets/images/carousel/carousel-03.jpg"
+                    header = "Third Card"
+                    description = "Third card description."
+                    alternative-text = "Third card accessible description."
+                    href = "https://www.salesforce.com">
+                </lightning-carousel-image>
+                </lightning-carousel>
+            </div>
+        </div>
+    </div>
+    
+    </template>

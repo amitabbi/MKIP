@@ -1,0 +1,31 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId"> <!--inherit recordId attribute-->
+<aura:attribute name="record" type="Object" 
+  description="The record object to be displayed"/>
+<aura:attribute name="accountRecord" type="Object" 
+  description="A simplified view record object to be displayed"/>
+<aura:attribute name="recordError" type="String" 
+  description="An error message bound to force:recordData"/>
+<force:recordData aura:id="recordEditor"
+    layoutType="FULL"
+    recordId="{!v.recordId}"
+    targetError="{!v.recordError}"
+    targetRecord="{!v.record}"
+    targetFields ="{!v.accountRecord}"
+    mode="EDIT"/>
+    <!-- Display a lightning card with details about the record -->
+<div class="Record Details"> 
+
+        <div class="slds-p-horizontal--small">
+            <p class="slds-text-heading--small">
+                <lightning:input label="Account Name" value="{!v.accountRecord.Name}" /></p>
+        </div>
+    <lightning:button label="Save Account" variant="brand" onclick="{!c.handleSaveRecord}" />
+
+   
+</div>
+<!-- Display Lightning Data Service errors, if any -->
+<aura:if isTrue="{!not(empty(v.recordError))}">
+    <div class="recordError">
+        {!v.recordError}</div>
+</aura:if>
+</aura:component>

@@ -1,0 +1,83 @@
+<template>
+    <lightning-card>
+        <lightning-layout vertical-align="center" class="x-large">
+
+
+            <div class="slds-size_2-of-3 slds-p-around_medium">
+                <div class="slds-col">
+                    <lightning-layout-item padding="around-small">
+                        <lightning-input type="toggle" label="Lookup Search" onchange={toggleChange}>
+                        </lightning-input>
+                        <br />
+                        <c-utils-look-up child-object-api-name="Case" target-field-api-name="ContactId"
+                            onvalueselected={handleValueSelcted} disabled={lookUpDisabled}></c-utils-look-up>
+                        The selected record Id is:- {selectedRecordId}
+                        <br />
+                        <lightning-input type="text" value={qCompany} name="qCompany" onchange={handleChange}
+                            label="Company:" disabled={inputDisabled}></lightning-input>
+                        <lightning-input type="text" value={qFName} name="qFName" onchange={handleChange}
+                            label="First Name:" disabled={inputDisabled}></lightning-input>
+                        <lightning-input type="text" value={qLName} name="qLName" onchange={handleChange}
+                            label="Last Name:" disabled={inputDisabled}></lightning-input>
+                        <lightning-input type="text" value={qMob} name="qMob" onchange={handleChange} label="Mobile:" disabled={inputDisabled}>
+                        </lightning-input>
+                        <lightning-input type="text" value={qEmail} name="qEmail" onchange={handleChange}
+                            label="Email:" disabled={inputDisabled}>
+                        </lightning-input>
+                    </lightning-layout-item>
+                    <br />
+
+                    
+
+                </div>
+
+            </div>
+
+
+            
+                <div class="slds-col">
+
+
+                    <div class="slds-p-around_medium lgc-bg">
+                        <ul id="myUL">
+                            <li><span class="caret">Quote Summary</span>
+                                <ul class="nested">
+                                    <li class="name">{sport}</li>
+                                    <li class="name">{group}</li>
+                                    <li class="name">{gender}</li>
+                                    <li class="name">{homeGround}</li>
+                                    <li class="name">{discount}</li>
+
+                                </ul>
+                            </li>
+
+                            <li><span class="caret">Customer Summary</span>
+                                <ul class="nested">
+                                    <li class="name">{qCompany}</li>
+                                    <li class="name">{qFName}</li>
+                                    <li class="name">{qLName}</li>
+                                    <li class="name">{qMob}</li>
+                                    <li class="name">{qEmail}</li>
+
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <div class="slds-p-around_medium slds-text-align_center">
+                            <lightning-button class="slds-m-right_small" variant="brand" type="submit" label="Previous"
+                                onclick={handleCustPreviousClick}></lightning-button>
+                            <lightning-button class="slds-m-right_small" variant="brand" type="submit" label="Next"
+                                onclick={handleCustNextClick}></lightning-button>
+                        </div>
+
+
+                    </div>
+                
+
+            </div>
+
+
+
+        </lightning-layout>
+    </lightning-card>
+</template>

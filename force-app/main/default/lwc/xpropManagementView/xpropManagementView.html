@@ -1,0 +1,69 @@
+<template>
+  <template if:true={showCharts}>
+    <div class="topnav">
+        <a href="" class="submitbutt" onclick={manageLotChartHandler}>Lot</a>
+        <a href="" class="submitbutt" onclick={manageProjectChartHandler}>Project</a>
+        <a href="" class="submitbutt" onclick={manageProjectOppsByStageChartHandler}>Project Opportunities By Stage</a>
+        <a href="" class="submitbutt" onclick={manageProjectLotsByPriceChartHandler}>Project Lots Price</a>
+      </div>
+
+    <div class="c-container">
+        <lightning-layout multiple-rows="true">
+
+          <lightning-layout-item
+            padding="around-small"
+            size="6"
+            large-device-size="6"
+            medium-device-size="12"
+          >
+            <div class="chart1" lwc:dom="manual"></div>
+          </lightning-layout-item>
+
+          <lightning-layout-item
+            padding="around-small"
+            size="6"
+            large-device-size="6"
+            medium-device-size="12"
+          >
+          
+          <!-- Placeholder for chart 2 -->
+          <div class="chart2" lwc:dom="manual"></div>
+          </lightning-layout-item>
+
+        
+
+        </lightning-layout>
+      </div>
+
+
+      <div class="c-container">
+        <lightning-layout multiple-rows="true">
+
+          <lightning-layout-item
+            padding="around-small"
+            size="6"
+            large-device-size="6"
+            medium-device-size="12"
+          >
+            <div class="chart3" lwc:dom="manual"></div>
+          </lightning-layout-item>
+
+          <lightning-layout-item
+            padding="around-small"
+            size="6"
+            large-device-size="6"
+            medium-device-size="12"
+          >
+          
+          <!-- Placeholder for chart 2 -->
+          <div class="chart4" lwc:dom="manual"></div>
+          </lightning-layout-item>
+
+        
+
+        </lightning-layout>
+      </div>
+
+
+    </template>
+</template>

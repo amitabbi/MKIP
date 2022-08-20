@@ -1,0 +1,27 @@
+<template>
+
+    <lightning-layout vertical-align="end">
+        <lightning-layout-item padding="around-small" size="8">
+
+            <template if:false={recFound}>REC Not Found</template>
+          
+        <lightning-input type="text" value={qRECNum} name="qRECNum" onchange={handleChange}
+        label="REC number:" disabled={inputDisabled} required></lightning-input>
+        <lightning-input type="text" value={qRECName} name="qRECName" onchange={handleChange}
+        label="REC name:" disabled=true></lightning-input>
+        <lightning-input type="phone" value={qRECPhone} name="qRECPhone" onchange={handleChange}
+        label="REC contact phone:" disabled=true ></lightning-input>
+        <lightning-input type="email" value={qRECEmail} name="qRECEmail" onchange={handleChange}
+        label="REC contact email:" disabled=true></lightning-input>
+  
+</lightning-layout-item>
+      
+
+
+<lightning-layout-item padding="around-small" size="4">
+<lightning-button style="margin-left: 4px;" label="Search" variant="brand" icon-name="standard:search" icon-position="left"
+        onclick={handleSearch}></lightning-button>  
+ </lightning-layout-item>
+ </lightning-layout>
+
+</template>

@@ -1,0 +1,35 @@
+<template>
+
+   
+    
+        
+    <!--<lightning-layout-item padding="around-small">
+        <div class="myColor">
+        <lightning-input name="inputUser" label="User Input" value={inputUser} 
+            onchange={handleTextChange}></lightning-input>
+        </div>-->
+        <div style="background-color: white;">
+        <lightning-layout>
+            <lightning-layout-item padding="around-small">
+        <template for:each={contacts} for:item="contact">
+            <div key={contact.Id} class="slds-var-m-around_medium myColor"
+                onclick={handlePassAddress} data-id={contact.Id}>
+                <lightning-tile title={contact.Name} label={contact.Name}>
+                    <dl class="slds-dl_horizontal">
+                        <dt class="slds-dl_horizontal__label">
+                            <p class="slds-truncate" title="Email">Email:</p><hr>
+                        </dt>
+                        <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                            <p class="slds-truncate" title={contact.Email}>{contact.Email}</p><hr>
+                        </dd>
+                        </dl>
+        </lightning-tile>
+        </div>
+        </template>
+
+    </lightning-layout-item>
+
+</lightning-layout>
+</div>
+    
+</template>

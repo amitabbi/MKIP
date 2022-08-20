@@ -1,0 +1,36 @@
+<template>
+
+    <lightning-layout horizontal-align="center">
+
+        <lightning-layout-item padding="around-small">
+    <lightning-card  variant="Narrow">
+        
+        <p slot="footer">
+            <a href={newConURL} class="slds-p-around_small slds-m-around_small button" onclick={confirmClickHandler}>Apply for New Connection</a>
+        </p>
+    </lightning-card>
+    </lightning-layout-item>
+
+    <lightning-layout-item padding="around-small">
+        <lightning-card  variant="Narrow">
+            <p class="slds-p-horizontal_small">Alterations Connections</p>
+            <p slot="footer">
+                <a href={newConURL} class="slds-p-around_small slds-m-around_small button" onclick={confirmClickHandler}>Modify Existing Connection</a>
+            </p>
+        </lightning-card>
+        </lightning-layout-item>
+
+
+        <lightning-layout-item padding="around-small">
+            <lightning-card  variant="Narrow">
+                <p class="slds-p-horizontal_small">Abolishment Connections</p>
+                <p slot="footer">
+                    <a href={newConURL} class="slds-p-around_small slds-m-around_small button" onclick={confirmClickHandler}>Abolish Connection</a>
+                </p>
+            </lightning-card>
+            </lightning-layout-item>
+
+
+
+    </lightning-layout>
+</template>

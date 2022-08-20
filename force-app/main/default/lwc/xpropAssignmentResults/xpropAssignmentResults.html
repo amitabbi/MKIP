@@ -1,0 +1,197 @@
+<template>
+    <lightning-card>
+
+           <!-- insert spinner -->
+     <template if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+    </template>
+
+        <lightning-radio-group class="slds-align_absolute-center" name="radioGroupAssign" label="" options={optionsAssign} value={value} type="button"
+          onchange={selectHandler}>
+        </lightning-radio-group>
+
+
+    <lightning-layout multiple-rows horizontal-align="center">
+        <template if:true={perAgentSelected}>
+        <template if:true={agentsFound}>
+            <template for:each={agents} for:item="agent">
+                
+                <lightning-layout-item key={agent.Id} padding="around-small" size="12" small-device-size="6"
+                    large-device-size="3" medium-device-size="4">
+                    <div class="card">
+                       
+                            <img src={agent.Agent_Picture__c} class="tile slds-align_absolute-center" alt="Agent Picture" >
+                       
+                        <!--<a><div style={backgroundStyle} class="tile"></div></a>-->
+                            <div class="container">
+                                
+                                    <h4><b>{agent.Name}</b></h4>
+                                    <p>Internal Sales Agent</p>
+                                </div>
+                                
+                               <div class="slds-align_absolute-center">
+                                    <a href="" onclick={assignLotHandler} class="agentlinks" id={agent.OwnerId} data-cid={agent.Id}>Assign</a>
+                                    <a href="" onclick={showAllocationHandler} class="agentlinks" name={agent.Name} id={agent.OwnerId}>View</a>
+                            </div>
+                        </div>    
+                  
+                </lightning-layout-item>
+            
+            </template>
+        </template>
+        <template if:false={agentsFound}>
+            <div class="slds-align_absolute-center container">
+                No Agents Found
+            </div>
+        </template>
+    </template>
+    </lightning-layout>
+
+    <template if:true={searchSelected}>
+    <div class="slds-p-around_small lgc-bg">
+        <lightning-input label="Typeahead Search" type="Search" onchange={handleKeyChange}
+            class="slds-m-bottom_small" value={searchKey}></lightning-input>
+    </div>
+</template>
+</lightning-card>
+
+<!-- Show Search Results -->
+<lightning-card>
+    <lightning-layout multiple-rows horizontal-align="center">
+        <template if:true={showSearchResults}>
+        <template if:true={agentsTypeAheadRes.data}>
+            <template for:each={agentsTypeAheadRes.data} for:item="agent">
+                
+                <lightning-layout-item key={agent.Id} padding="around-small" size="12" small-device-size="6"
+                    large-device-size="3" medium-device-size="4">
+                    <div class="card">
+                       
+                            <img src={agent.Agent_Picture__c} class="tile slds-align_absolute-center" alt="Agent Picture" >
+                       
+                        <!--<a><div style={backgroundStyle} class="tile"></div></a>-->
+                            <div class="container">
+                                
+                                    <h4><b>{agent.Name}</b></h4>
+                                    <p>Internal Sales Agent</p>
+                                </div>
+                                
+                               <div class="slds-align_absolute-center">
+                                    <a href="" onclick={assignLotHandler} class="agentlinks" id={agent.OwnerId} data-cid={agent.Id}>Assign</a>
+                                    <a href="" onclick={showAllocationHandler} class="agentlinks" name={agent.Name} id={agent.OwnerId}>View</a>
+                            </div>
+                        </div>    
+                  
+                </lightning-layout-item>
+            
+            </template>
+        </template>
+        <template if:false={showSearchResults}>
+            <div class="slds-align_absolute-center container">
+                No Agents Found
+            </div>
+        </template>
+    </template>
+    </lightning-layout>
+</lightning-card>
+
+
+<!-- Modal to show existing allocations -->
+<template if:true={isModalOpen}>
+    <!-- Modal/Popup Box LWC starts here -->
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <!-- Modal/Popup Box LWC header here -->
+            <header class="slds-modal__header">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                    <lightning-icon icon-name="utility:close"
+                        alternative-text="close"
+                        variant="inverse"
+                        size="small" ></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Allocations for {selectedAgentName}</h2>
+            </header>
+            <!-- Modal/Popup Box LWC body starts here -->
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <table class="customers">
+                    <tr>
+                      <th>Project</th>
+                      <th>Building</th>
+                      <th>Lot</th>
+                    </tr>
+                    <template if:true={agentsAllocFound}>
+                    <template for:each={agentallocations} for:item="agentalloc">
+                    <tr key={agentalloc.Id}>
+                      <td>{agentalloc.Lot__r.Project_Name__c}</td>
+                      <td>{agentalloc.Lot__r.Building_Name__c}</td>
+                      <td><a href="">{agentalloc.Lot__r.Name}</a></td>
+                    </tr>
+                </template>
+            </template>
+            <template if:false={agentsAllocFound}>
+                No Allocations Found
+            </template>
+                    </table>
+            </div>
+            <!-- Modal/Popup Box LWC footer starts here -->
+            <footer class="slds-modal__footer">
+                <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Close</button>
+            </footer>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+
+
+
+
+<!-- Modal to show existing allocations -->
+<template if:true={showAlreadyAssignedModal}>
+    <!-- Modal/Popup Box LWC starts here -->
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <!-- Modal/Popup Box LWC header here -->
+            <header class="slds-modal__header">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                    <lightning-icon icon-name="utility:close"
+                        alternative-text="close"
+                        variant="inverse"
+                        size="small" ></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">Agent {selectedAgentName} is already assigned. Select another agent if required.</h2>
+            </header>
+           
+            <!-- Modal/Popup Box LWC footer starts here -->
+            <footer class="slds-modal__footer">
+                <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Close</button>
+            </footer>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+
+<lightning-card>
+<lightning-layout multiple-rows horizontal-align="center">
+    <template if:true={bulkSelected}>
+            <div class="acttable">
+                <lightning-datatable key-field="Id" data={agentsDtList} columns={columns}
+                    onrowaction={handleRowAction} onrowselection={getSelectedRecords}>
+                </lightning-datatable>
+                <lightning-button class="button" label="Assign" onclick={assignHandler}>
+                </lightning-button>
+            </div>
+    </template>
+    <template if:false={agentsFound}>
+        <div class="slds-align_absolute-center container">
+            No Agents Found
+        </div>
+    </template>
+</lightning-layout>
+</lightning-card>
+
+
+
+
+
+</template>

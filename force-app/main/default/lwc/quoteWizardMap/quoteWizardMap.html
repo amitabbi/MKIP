@@ -1,0 +1,11 @@
+<template>
+    <lightning-card>
+    <template if:false={homeGround}>
+        <h1 style="text-align:left;font-size: 2em;font-weight: bold;">Make a selection to display</h1>
+</template>
+<template if:true={homeGround}>
+    <lightning-map
+    map-markers={mapMarkers} zoom-level={zoomLevel} class="home"></lightning-map>
+</template>
+</lightning-card>
+</template>

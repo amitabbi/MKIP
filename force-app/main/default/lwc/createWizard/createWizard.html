@@ -1,0 +1,30 @@
+<template>
+
+    <template class="ftemp" if:true={step1}>
+    <lightning-card>
+    <c-create-wizard-step1 onaccountnamevaluechange={handleAccountName}></c-create-wizard-step1>
+    
+    <lightning-button class="slds-m-right_small" variant="brand" label="Next" onclick={handleStep1NextClick}></lightning-button>
+    </lightning-card>
+    </template>
+        
+
+
+    <template if:true={step2}>
+        <lightning-card>
+        <c-create-wizard-step2 onconnamevaluechange={handleCon}></c-create-wizard-step2>
+        <lightning-button class="slds-m-right_small" variant="brand" label="Previous" onclick={handleStep2PreviousClick}></lightning-button>
+        <lightning-button class="slds-m-right_small" variant="brand" label="Next" onclick={handleStep2NextClick}></lightning-button>
+        </lightning-card>
+    </template>
+
+    <template if:true={step3}>
+        <lightning-card>
+        <c-create-wizard-step3 onenqnamevaluechange={handleEnq}></c-create-wizard-step3>
+        <lightning-button class="slds-m-right_small" variant="brand" label="Previous" onclick={handleStep3PreviousClick}></lightning-button>
+        <lightning-button class="slds-m-right_small" variant="brand" label="Submit" onclick={handleStep3SubmitClick}></lightning-button>
+        </lightning-card>
+    </template>
+
+   
+</template>

@@ -1,0 +1,62 @@
+<template>
+
+           <!-- insert spinner -->
+           <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+        </template>
+
+
+<div class="glob">
+  <template if:true={showProfiles}>
+      <lightning-layout multiple-rows horizontal-align="center">
+        <template if:true={projectsFound}>
+            <template for:each={projects} for:item="project">
+                
+                <lightning-layout-item key={project.Id} padding="around-small" size="4">
+                    <div class="container slds-align_absolute-center">
+     
+                       
+                            <img src={project.Project_Picture__c} class="" alt="Project Picture" >
+                            
+
+                      <div class="overlay">
+                        <div class="text"><lightning-formatted-rich-text value={project.Project_Details__c}>
+                        </lightning-formatted-rich-text></div>
+                      </div>
+              
+                  </div>
+                  <div class="slds-grid slds-align_absolute-center">
+                    <div class="slds-col">
+                  <div class="slds-align_absolute-center slds-m-around_small"><p><a href="" class="bookbut" id={project.Id} onclick={bookAppClickHandler}>Book Appointment</a></p></div></div>
+                  <div class="slds-col">
+                  <div class="slds-align_absolute-center slds-m-around_small"><p><a href="" class="bookbut" id={project.Location__Latitude__s} name={project.Location__Longitude__s} onclick={mapClickHandler}>Show on Map</a></p></div></div>
+                </div>
+                  
+                </lightning-layout-item>
+            
+            </template>
+        </template>
+        
+      
+        <template if:false={projectsFound}>
+            <div class="slds-align_absolute-center container">
+                No Projects Found
+            </div>
+        </template>
+    </lightning-layout>
+  </template>
+
+    <template if:true={showMap}>
+      <a href="" class="slds-align_absolute-center slds-m-around_small" onclick={mapBackClickHandler}>Back</a>
+      <div class="slds-align_absolute-center">
+      <lightning-map map-markers={mapMarkers} zoom-level={zoomLevel} class="mapstyle slds-align_absolute-center slds-m-around_small"></lightning-map>
+    </div>
+    
+    </template>
+
+ 
+  </div>
+
+
+
+</template>

@@ -1,0 +1,82 @@
+<template>
+
+    <div class="glo">
+
+        <lightning-accordion allow-multiple-sections-open active-section-name={activeSections}>
+            <lightning-accordion-section name="A" label="Pending Call To Actions">
+
+                
+
+                <template if:true={openTasks}>
+                    <template for:each={openTasks} for:item="optks">
+                        <template if:true={isSPID}>
+                        <c-ue-call-to-action-item key={optks.Id} 
+                                                optks={optks} 
+                                                wtid={recordId}
+                                                onrefreshthiscompo={handleRefreshThisCompo}>
+    
+                        </c-ue-call-to-action-item>
+
+                    </template>
+
+
+                    <template if:true={isReqNMISO}>
+                        Show Request B2B Allocate NMI SO Task
+    
+                    
+
+                    </template>
+    
+                    </template>
+                </template>
+
+                <!--<template if:true={openTasksOther}>
+                <c-ue-call-to-action-other-item key={opothtks.Id} 
+                opothtks={opothtks} 
+                wtid={recordId}
+                onrefreshthiscompo={handleRefreshThisCompo}>
+
+                </c-ue-call-to-action-other-item>
+            </template>-->
+
+                <template if:false={openTasks}>
+                    <p>Loading...</p>
+                </template>                
+
+            </lightning-accordion-section>
+
+            <lightning-accordion-section name="B" label="Completed Call To Actions">
+                <template if:true={completedTasks}>
+                    <template for:each={completedTasks} for:item="comptks">
+                        <!-- icon-name="standard:task" -->
+                        <lightning-accordion allow-multiple-sections-open active-section-name={activeSectionsComp} key={comptks.Id}>
+                        <lightning-accordion-section  
+                                                     name="comptkssec" 
+                                                     label={comptks.Subject}
+                                                     key={comptks.Id}>
+    
+                            <div class="slds-box slds-theme_shade">
+                                <lightning-card variant="Narrow">
+                                    {comptks.Subject}
+                                    {comptks.Description}
+    
+    
+    
+                                </lightning-card>
+                            </div>
+    
+    
+                        </lightning-accordion-section>
+                        </lightning-accordion>
+                    </template>
+                </template>
+                <template if:false={completedTasks}>
+                    <p>Loading...</p>
+                </template>                
+
+                
+            </lightning-accordion-section>
+
+        </lightning-accordion>
+    </div>
+</template>

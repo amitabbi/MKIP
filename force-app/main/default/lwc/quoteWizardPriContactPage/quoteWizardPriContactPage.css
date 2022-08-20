@@ -1,0 +1,17 @@
+.detail { font-weight:bold;font-family:Calibri;font-size:30px }
+.name { color:green;font-weight:bold;font-family:Tahoma;font-size:16px;text-indent: 20px; }
+
+.lgc-bg {
+    background-color: rgb(242, 242, 242);
+}
+
+.lgc-bg-inverse {
+    background-color: rgb(22, 50, 92);
+}
+
+.caret::before {
+    content: "\25B6";
+    color: black;
+    display: inline-block;
+    margin-right: 6px;
+  }

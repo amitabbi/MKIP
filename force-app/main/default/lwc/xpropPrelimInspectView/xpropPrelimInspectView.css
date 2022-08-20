@@ -1,0 +1,42 @@
+.divbox{
+    width: 800px;
+    height: 100px;
+    padding: 10px 10px 10px 10px;
+
+}
+
+.heading1{
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+    background: #7e040e;
+    color: white;
+    font-size: 30px;
+}
+
+.submitbutt{
+    background-color: #7e040e; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 400px;
+    margin-top: 10px;
+    margin-left: 200px;
+}
+
+.layoutitem{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.txarea{
+   padding: 5px 5px;
+}
+
+.fbkscroll{
+    overflow-y: auto;
+    height: 400px;
+}

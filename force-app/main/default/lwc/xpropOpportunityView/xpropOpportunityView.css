@@ -1,0 +1,22 @@
+div.scrollmenu {
+    /*background-color: #FAEBEFFF;*/
+    overflow: auto;
+    white-space: nowrap;
+    height:140px;
+    padding-top: 5px;
+  }
+
+  .cardcontent{
+    padding-left: 15px;
+  }
+
+  .cardtitle{
+    padding-left: 15px;
+    font-size:small;
+
+  }
+
+  .center{
+    text-align: center;
+    padding-top: 5px;
+  }

@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Enquiries under escalation">
+        <div style="height: 300px;">
+            <template if:true={enqList}>
+            <lightning-datatable
+                    key-field="id"
+                    data={enqList}
+                    columns={columns}
+                    onrowaction={handleRowAction}>
+            </lightning-datatable>
+        </template>
+        <template if:true={error}></template>
+        </div> 
+    </lightning-card>
+</template>

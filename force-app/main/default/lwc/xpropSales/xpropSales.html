@@ -1,0 +1,74 @@
+<template>
+   
+
+    <lightning-layout multiple-rows horizontal-align="center">
+    <template if:true={agentsFound}>
+        <template for:each={agents} for:item="agent">
+            
+            <lightning-layout-item key={agent.Id} padding="around-small" size="12" small-device-size="6"
+                large-device-size="3" medium-device-size="4">
+                <div class="card">
+                   
+                        <img src={agent.Contact__r.Agent_Picture__c} class="tile slds-align_absolute-center" alt="Agent Picture" >
+                   
+                    <!--<a><div style={backgroundStyle} class="tile"></div></a>-->
+                        <div class="container">
+                            
+                                <h4><b>{agent.Contact__r.Name}</b></h4>
+                                <p>Internal Sales Agent</p>
+                            </div>
+                            
+                            <div class="slds-align_absolute-center">
+                                <lightning-button label="Show Details" onclick={showAgentDetHandler} id={agent.Agent_User__c}></lightning-button>
+                        </div>
+                    </div>    
+              
+            </lightning-layout-item>
+        
+        </template>
+    </template>
+    <template if:false={agentsFound}>
+        <div class="slds-align_absolute-center container">
+            No Agents Found
+        </div>
+    </template>
+</lightning-layout>
+
+
+<!-- Leads-->
+
+<lightning-layout multiple-rows class="slds-align_absolute-center">
+    <template if:true={agentsFound}>
+   
+        <lightning-layout-item padding="around-small">
+        <h2>Open Leads for {lotName}</h2>
+        <div class="datatable">
+<lightning-datatable
+style="width: 100%;"
+key-field="Id"
+data={agentLeads}
+columns={leadcolumns}
+onrowaction={handleRowAction}
+>
+</lightning-datatable>
+</div>
+        </lightning-layout-item>
+<!-- Opps-->
+
+<lightning-layout-item padding="around-small">
+    <h2>Open Opportunities for {lotName}</h2>
+    <div class="datatable">
+    <lightning-datatable
+    style="width: 100%;"
+    key-field="Id"
+    data={agentOpportunities}
+    columns={oppcolumns}
+    onrowaction={handleRowAction}
+    >
+    </lightning-datatable>
+</div>
+    </lightning-layout-item>
+</template>
+</lightning-layout>
+
+</template>

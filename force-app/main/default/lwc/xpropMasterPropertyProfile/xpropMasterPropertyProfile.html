@@ -1,0 +1,31 @@
+<template>
+    <div class="glob">
+    <template if:true={showPropertyProfiles}>
+    <c-xprop-property-profile oncapturebookappbutton={capturebookappbutton}></c-xprop-property-profile>
+</template>
+
+<template if:true={showAppBookPI}>
+    <c-xprop-book-appointment-progress prog-val={progVal}></c-xprop-book-appointment-progress>
+    <lightning-layout>
+        
+
+    <lightning-layout-item padding="around-small">
+    <c-xprop-selected-property-profile selected-project-id={selectedProjectId}></c-xprop-selected-property-profile>
+    </lightning-layout-item>
+
+
+<lightning-layout-item padding="around-small">
+    
+    <c-xprop-book-appointment-personal-info oncapturebackbutton={capturebackbutton} oncaptureproceedbutton={captureproceedbutton}></c-xprop-book-appointment-personal-info>
+</lightning-layout-item>
+
+</lightning-layout>
+</template>
+
+<template if:true={showAppBook}>
+    <c-xprop-book-appointment-progress prog-val={progVal}></c-xprop-book-appointment-progress>
+    <c-xprop-book-appointment selected-project-id={selectedProjectId} lead-id={leadId} oncaptureshowavailbutton={captureshowavailbutton} oncapturebackbutton={capturebackbutton} oncaptureconfirmappbutton={captureconfirmappbutton}></c-xprop-book-appointment>
+
+</template>
+</div>
+</template>

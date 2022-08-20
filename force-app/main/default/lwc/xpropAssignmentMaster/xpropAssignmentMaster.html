@@ -1,0 +1,10 @@
+<template>
+    <c-xprop-assignment oncapturelotinfo={captureLotInfo} oncaptureprojectinfo={captureProjectInfo}
+    oncapturebuildinginfo={captureBuildingInfo}></c-xprop-assignment>
+
+    <template if:true={showAssignmentResultsView}>
+    <c-xprop-assignment-results lot-id={lotId} lot-name={lotName} project-changed={projectChanged}
+    building-changed={buildingChanged}></c-xprop-assignment-results>
+</template>
+
+</template>

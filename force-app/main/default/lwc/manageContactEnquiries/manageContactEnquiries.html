@@ -1,0 +1,53 @@
+<template>
+    <div class="slds-m-around_medium">
+        <template if:true={conenq.data}>
+            <ul class="slds-list_horizontal" style="padding-left: 10px;">
+            <template for:each={conenq.data} for:item="cone">
+                
+                
+                <lightning-card style="width: 400px;padding-left: 10px;"  title="Hello" key={conenq.Id}>
+                    {cone.Name}<br>{cone.Days_Open__c}{cone.Enquiry_Type__c}{cone.Id}
+                    
+                    <lightning-button label="Edit" onclick={handleCardClick} id={cone.Id}></lightning-button>
+                    
+                    
+                    
+                    <p slot="footer">Card Footer</p>
+                
+
+                </lightning-card>
+            
+            </template>
+        </ul>
+
+        <lightning-layout>
+            <lightning-layout-item>
+                <lightning-button
+                    label="Previous"
+                    icon-name="utility:chevronleft"
+                    onclick={handlePrevious}
+                ></lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item flexibility="grow"></lightning-layout-item>
+            <lightning-layout-item>
+                <lightning-button
+                    label="Next"
+                    icon-name="utility:chevronright"
+                    icon-position="right"
+                    onclick={handleNext}
+                ></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+
+        
+
+        </template>
+        <template if:true={conenq.error}>
+            "No Records to Display"
+        </template>
+
+       
+    </div>
+
+    
+</template>

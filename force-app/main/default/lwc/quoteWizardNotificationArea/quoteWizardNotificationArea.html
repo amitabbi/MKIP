@@ -1,0 +1,61 @@
+<template>
+    
+
+    <div style="background-color: #444;height:110px;">
+
+       
+        
+
+    
+
+        <div class="mydiv slds-p-around_small">
+            <p style="margin-left: 150px;width:fit-content;"><lightning-input type="toggle" onchange={toggleChange}></lightning-input></p>
+            <div class="row">
+                <div class="column">
+                  <div class="card">
+                    <h3 style="font-size: 20px;">{tasksCount}</h3>
+                    <p style="font-size: 14px;">Tasks</p>
+                  </div>
+                </div>
+                </div>
+
+                <div class="row">
+                    <div class="column">
+                      <div class="card">
+                        <h3 style="font-size: 20px;">{leadsCount}</h3>
+                        <p style="font-size: 14px;">Leads</p>
+                      </div>
+                    </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column">
+                          <div class="card">
+                            <h3 style="font-size: 20px;">{casesCount}</h3>
+                            <p style="font-size: 14px;">Cases</p>
+                          </div>
+                        </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="column">
+                              <div class="card">
+                                <h3 style="font-size: 20px;">{oppsCount}</h3>
+                                <p style="font-size: 14px;">Opportunities</p>
+                              </div>
+                            </div>
+                            </div>
+
+                            
+                           
+
+
+       <!--<p class="noti">Tasks: <i style="color:green;">{tasksCount}</i> </p>
+        <p class="noti">Leads: <i style="color:green;">{leadsCount}</i> </p> 
+        <p class="noti">Cases: <i style="color:green;">{casesCount}</i></p>-->
+
+                <span class="label danger">5</span>
+          
+    </div>
+    </div>
+</template>

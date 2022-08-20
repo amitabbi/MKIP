@@ -1,0 +1,108 @@
+<template>
+  <lightning-card variant="narrow" title="Search for a contact">
+
+    <c-utils-look-up child-object-api-name='Case' 
+    target-field-api-name='ContactId'
+    onvalueselected={handleValueSelcted} disabled={lookUpDisabled}></c-utils-look-up>
+    The selected record Id is:- {selectedRecordId}
+
+    <lightning-input type="toggle"
+                     label="Lookup Search"
+                     onchange={toggleChange}>
+    </lightning-input>
+
+    <lightning-layout multiple-rows class="slds-form slds-form_horizontal">
+        <div class="slds-col">
+        <lightning-input
+          label="First Name"
+          name="fname"
+          class="validValue"
+          value={conFName}
+          onchange={handleConInputChange}
+          field-level-help="First name of a contact"
+          message-when-value-missing="Please enter the First Name"
+          disabled={conFNameDisabled}
+          required
+        ></lightning-input>
+      </div>
+        <lightning-input
+          label="Last Name"
+          name="lname"
+          class="validValue"
+          value={conLName}
+          onchange={handleConInputChange}
+          field-level-help="Last name of a contact"
+          message-when-value-missing="Please enter the Last Name"
+          disabled={conLNameDisabled}
+          required
+        ></lightning-input>
+        <lightning-input
+          label="Mobile"
+          name="mob"
+          class="validValue"
+          value={conMob}
+          onchange={handleConInputChange}
+          field-level-help="Mobile phone of a contact"
+          message-when-value-missing="Please enter the mobile phone"
+          disabled={conMobDisabled}
+          required
+        ></lightning-input>
+    </lightning-layout>
+
+    <lightning-layout horizontal-align="center">
+      <lightning-layout-item padding="around_xx-small">
+        <lightning-button
+          class="slds-m-right_xx-small"
+          variant="brand"
+          label="Reset"
+          onclick={handleConSearchResetClick}
+        ></lightning-button>
+      </lightning-layout-item>
+      <lightning-layout-item padding="around_xx-small">
+        <lightning-button
+          class="slds-m-right_xx-small"
+          variant="brand"
+          label="Search"
+          onclick={handleConSearchClick}
+        ></lightning-button>
+      </lightning-layout-item>
+    </lightning-layout>
+  </lightning-card>
+
+
+  <!-- Display Alert BannerResults -->
+  <template if:true={displayAlertBanner}>
+  <c-utils-alert-banner alert-message={alertMessage}></c-utils-alert-banner>
+</template>
+
+  <!-- Display Contact Search Results -->
+
+  <template if:true={isLoading}>
+    <lightning-spinner alternative-text="Loading" size="small" variant="brand"></lightning-spinner>
+    </template> 
+
+    <div class="div1">
+  <template if:true={conFound}>
+    <ul class="slds-list_horizontal" style="padding-left: 0px;">
+      <template for:each={conRes} for:item="con">
+        <lightning-card key={con.Id} icon-name="standard:contact">
+          <lightning-button
+            label="View Contact Details"
+            slot="actions"
+            id={con.Id}
+            onclick={handleConDetailsClick}
+          ></lightning-button>
+          <a href="" onclick={handleNameSelect} style="padding-left: 10px;">Name: {con.FirstName} {con.LastName}</a><br />
+          <p style="padding-left: 10px;">Email: {con.Email} <br/>Mobile: {con.MobilePhone}</p>
+        </lightning-card>
+      </template>
+    </ul>
+  </template>
+</div>
+
+ 
+<c-con-app-record-detail></c-con-app-record-detail>
+
+
+
+</template>

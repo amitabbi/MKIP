@@ -1,0 +1,20 @@
+<template>
+    <template if:true={showLotCases}>
+    <lightning-layout multiple-rows>
+        <div class="vardiv">
+            <lightning-button variant="brand" label="" title="Save" icon-name="action:refresh" onclick={refreshHandler}
+                class="slds-m-left_x-small slds-float_right slds-align_absolute-center"></lightning-button>
+            <lightning-layout-item padding="around-small">
+                <template if:true={showLotCases}>
+                    <div class="header">
+                        Viewing Cases for {lotName}
+                    </div>
+
+                    <lightning-datatable key-field="Id" data={lotCases} columns={columns} onrowaction={handleRowAction}>
+                    </lightning-datatable>
+                </template>
+            </lightning-layout-item>
+        </div>
+    </lightning-layout>
+</template>
+</template>

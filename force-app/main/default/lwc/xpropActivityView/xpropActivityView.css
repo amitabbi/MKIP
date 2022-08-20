@@ -1,0 +1,42 @@
+div.scrollmenu {
+    /*background-color: #FAEBEFFF;*/
+    overflow: auto;
+    white-space: nowrap;
+    height:140px;
+    padding-top: 5px;
+  }
+
+  .cardcontent{
+    padding-left: 15px;
+  }
+
+  .cardtitle{
+    padding-left: 15px;
+    font-size:small;
+
+  }
+  .datatablebuttons{
+    padding-bottom: 10px;
+  }
+
+.lgc-bg {
+    background-color: rgb(242, 242, 242);
+}
+
+.center{
+    text-align: center;
+    padding-top: 5px;
+  }
+
+  /* Style the header */
+.header {
+    padding: 5px 5px;
+    background: rgb(87, 79, 87);
+    color: #f1f1f1;
+    font: 15px Arial, sans-serif;
+  }
+
+.acttable{
+    overflow-y: auto;
+    height: 400px;
+}

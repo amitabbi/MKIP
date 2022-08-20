@@ -1,0 +1,39 @@
+<template>
+    
+    <lightning-accordion allow-multiple-sections-open active-section-name={activeSections1} key={optks.Id}>
+        <lightning-accordion-section data-id="in1" name="optkssec" label={optks.Subject} key={optks.Id}>
+
+
+            <div class="slds-box slds-theme_shade">
+                <lightning-card variant="Narrow" >
+
+                    <div class="slds-grid slds-grid_vertical slds-p-horizontal_medium">
+                        <div class="slds-col">
+                            <span>
+                                <lightning-input type="text" label="SPID" required></lightning-input>
+                            </span>
+                        </div>
+                        <div class="slds-col">
+                            <span>
+                                <lightning-textarea name="tDescription" label="Enter some text"
+                                    onchange={handleChange}></lightning-textarea>
+                            </span>
+                        </div>
+                        <div class="slds-col">
+                            <span>
+                                <div class="slds-clearfix">
+                                    <!-- icon-name="standard:endorsement" -->
+                                    <lightning-button variant="brand" label={lblCompleted} title={lblCompleted}
+                                         onclick={markCompletedHandler}
+                                        id={optks.Id} class="slds-float_left"></lightning-button>
+                                </div>
+                            </span>
+                        </div>
+                    </div>                                 
+                </lightning-card>
+            </div>
+
+
+        </lightning-accordion-section>
+    </lightning-accordion>
+</template>

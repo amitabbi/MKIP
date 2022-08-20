@@ -1,0 +1,19 @@
+<template>
+    <div class="slds-grid">
+        <div class="slds-col slds-size_2-of-3">
+    <lightning-record-edit-form object-api-name={childObjectApiName}>
+        <lightning-input-field id="fieldid" required={required} variant="label-hidden" field-name={targetFieldApiName}
+            value={value} onchange={handleChange} disabled={disabled}>
+        </lightning-input-field>
+    
+        <lightning-messages></lightning-messages>
+    </lightning-record-edit-form>
+</div>
+<div class="slds-col slds-p-left_small slds-size_1-of-3">
+        <template if:true={displayReset}>
+        <lightning-button class="slds-m-top_small" icon-name="action:refresh" onclick={handleReset}></lightning-button>
+    </template>
+</div>
+    
+</div>
+</template>

@@ -1,0 +1,18 @@
+div.scrollmenu {
+    background-color: #FAEBEFFF;
+    overflow: auto;
+    white-space: nowrap;
+    height:167px;
+  }
+  
+
+
+  .lgc-bg {
+    background-color: #FAEBEFFF;
+
+}
+
+.block{
+  width: 40px;
+  
+}

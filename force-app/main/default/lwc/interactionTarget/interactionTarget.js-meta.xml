@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+         <target>lightning__AppPage</target>
+    </targets>
+
+    <targetConfigs>
+        <targetConfig targets="lightning__AppPage">
+            <event name="sourcecontact" label="Source Contact First Name" description="This is a source and target component.">
+                <schema>
+                     {
+                       "type": "object",
+                       "properties": {
+                         "FirstName": {
+                           "type": "string",
+                           "title": "Contact First Name"
+                         }
+                       }
+                     }
+                 </schema>
+            </event>
+            <property name="contactId" type="String" label="Contact Record Id" />
+        </targetConfig>
+    </targetConfigs>
+   
+</LightningComponentBundle>

@@ -1,0 +1,61 @@
+<template>
+    <template if:true={showCompletion}>
+    <lightning-icon style="margin-left: 5px" icon-name="standard:feedback"></lightning-icon>
+
+     <!-- insert spinner -->
+     <template if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+    </template>
+
+    <lightning-accordion active-section-name="A">
+        <lightning-accordion-section name="A" label="Create new feedback">
+            <lightning-layout horizontal-align="left">
+                <lightning-layout-item class="lay">
+                    <lightning-combobox name="feedbackType" label="Feedback Type" value={value}
+                        placeholder="Select a type" options={feedbackOptions} onchange={handleChange} required>
+                    </lightning-combobox>
+                </lightning-layout-item>
+
+                <lightning-layout-item class="lay">
+                    <div class="slds-form-element__control">
+                        <!-- add five star rating component -->
+                        <template if:true={showFiveStar}>
+                        <c-five-star-rating id="fiveComp" onchange={handleRatingChanged} onratingchange={handleRatingChanged}>
+                        </c-five-star-rating>
+                    </template>
+                    </div>
+                </lightning-layout-item>
+
+            </lightning-layout>
+            <lightning-textarea class="st" name="input1" onchange={handleChange} label="Enter Comments">
+            </lightning-textarea>
+
+            <lightning-button-icon icon-name="action:approval" size="medium" onclick={feedbackSaveHandler}
+                alternative-text="View More" class="slds-m-left_xx-small st"></lightning-button-icon>
+            <lightning-button-icon icon-name="action:close" size="medium" alternative-text="View More"
+                class="slds-m-left_xx-small st" onclick={feedbackResetHandler}></lightning-button-icon>
+        </lightning-accordion-section>
+
+
+        <lightning-accordion-section name="B" label="View existing feedback">
+            <div class="slds-m-around_medium fbkscroll">
+                <template if:true={lotFeedback}>
+                    <template for:each={lotFeedback} for:item="fbk">
+                        <div key={fbk}>
+                            <ul>
+                                <c-five-star-rating read-only="true" value={fbk.Feedback_Rating__c}>
+                                </c-five-star-rating>
+                                <li><b>{fbk.Feedback_Type__c}</b> {fbk.Comments__c}</li>
+                                <br />
+                            </ul>
+                        </div>
+                    </template>
+                </template>
+            </div>
+        </lightning-accordion-section>
+
+
+    </lightning-accordion>
+</template>
+
+</template>

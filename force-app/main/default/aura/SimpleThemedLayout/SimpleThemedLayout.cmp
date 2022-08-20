@@ -1,0 +1,54 @@
+<aura:component implements="forceCommunity:themeLayout" access="global" description="Sample Custom Theme Layout">
+
+    <aura:attribute name="blueBackground" type="Boolean" default="true"/> 
+    <aura:attribute name="smallLogo" type="Boolean" default="false" />
+    <aura:attribute name="search" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="profileMenu" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="navBar" type="Aura.Component[]" required="false"/>
+    <aura:attribute name="newHeader" type="Aura.Component[]" required="false"/>
+    <div>
+        <!--<div class="searchRegion">
+            {!v.search}
+        </div>-->
+        <div class="newHeader" style="background-color: #28317d;color:#424242;width:100%;height:80px;">
+   
+        
+             <div style="width: 100px;float:left; height:5px;  margin:5px;">
+             <img src="{!$Resource.AusNetLogo}"/>
+
+
+</div>
+        
+        <div style="width: 500px; float:left;height:20px;  margin:5px;margin-top:20px;margin-left:135px;">
+<center>
+{!v.search}
+    </center>
+</div>
+            
+                    <div style="width: 200px; float:right; height:20px;  margin:5px;margin-top:20px">
+{!v.profileMenu}
+</div>
+
+             </div>
+        
+
+        
+	<div class="navigationBarHeader" style="margin-top:0px">
+<div class="navigationBar">
+            {!v.navBar}
+           <div class="mainContentArea">
+            {!v.body}
+        </div>
+               
+        </div>
+     
+   
+	</div>
+       
+        <!--<div class="newHeader">
+            {!v.newHeader}
+        </div>-->
+        
+        
+    </div>
+</aura:component>

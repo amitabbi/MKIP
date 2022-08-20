@@ -1,0 +1,11 @@
+.cardbut:active { /* working */
+  color: rgb(219, 79, 79);
+}
+
+.cardbut:focus { /* not working */
+    color: rgb(219, 79, 79);
+  }
+
+.div1 {
+      background-color: white;
+  }

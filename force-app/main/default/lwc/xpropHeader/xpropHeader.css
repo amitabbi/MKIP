@@ -1,0 +1,11 @@
+.lightcard{
+    height: 90px;
+    background-color: white;
+}
+
+.colalign{
+    margin: 15px 15px 15px 15px;
+    font-size:14px;
+    color: purple;
+    font-family: "Lucida Console", Monaco, monospace;
+}

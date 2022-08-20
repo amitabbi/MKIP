@@ -1,0 +1,24 @@
+.datatablebuttons{
+    padding-bottom: 10px;
+  }
+
+.lgc-bg {
+    background-color: rgb(242, 242, 242);
+}
+
+.center{
+    text-align: center;
+    padding-top: 5px;
+  }
+
+  /* Style the header */
+.header {
+    padding: 5px 5px;
+    background: rgb(87, 79, 87);
+    color: #f1f1f1;
+    font: 15px Arial, sans-serif;
+  }
+
+  .vardiv{
+    width: 800px;
+  }

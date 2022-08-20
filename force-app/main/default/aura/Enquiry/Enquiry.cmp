@@ -1,0 +1,79 @@
+<aura:component controller="EnquiryController"
+        implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:actionOverride"
+        access="global">
+
+        <!--general attributes used across tabs to process information-->
+        <aura:attribute name="recordId" type="String" />
+        <aura:attribute name="CaseRecord" type="Case" default="{'sobjectType' : 'Case'}" />
+        <aura:attribute name="IsSpinner" type="Boolean" default="false" />
+        <aura:attribute name="casestatusoptions" type="List" default="[]" />
+        <aura:attribute name="caselist" type="Object" default="[]" />
+        <aura:attribute name="searchClicked" type="boolean" default="false" />
+
+        <!-- Attributes for pagination-->
+        <aura:attribute name="PaginationList" type="Object[]"/>
+        <aura:attribute name="startPage" type="Integer" />
+        <aura:attribute name="endPage" type="Integer"/>
+        <aura:attribute name="totalRecords" type="Integer"/>
+        <aura:attribute name="pageSize" type="Integer" default="6"/>
+        <!-- Attributes for pagination-->
+
+
+        <!--handle screen load processing-->
+        <aura:handler name="init" value="{!this}" action="{!c.doTabInit}" />
+
+       
+
+        <lightning:tabset aura:id="EnquiryTabs" variant="scoped">
+
+
+                <!--show spinner-->
+                <aura:if isTrue="{!v.showSpinner}">
+                        <lightning:spinner class="Spin" variant="brand" title="Loading" style="position:fixed"
+                                size="large" alternativeText="Loading" />
+                </aura:if>
+                <!--start Triage tab-->
+
+                <lightning:tab label="Case" id="CaseTab">
+
+                        <lightning:combobox aura:id="CaseStatus" label="Search by Status" required="true"
+                                dropdownAlignment="right" variant="standard" options="{!v.casestatusoptions}" />
+
+                        <div align="right" class="slds-m-right_medium" style="margin-top:30px;margin-right:10px">
+                                <lightning:button label="Search" variant="Brand" onclick="{!c.searchCaseAction}" />
+                        </div>
+
+                        
+                        <div class="slds-grid slds-wrap slds-m-around_xxxx-small">	      	
+                        <aura:iteration items="{!v.PaginationList}" var="cases">
+                        <div class="slds-col slds-large-size_1-of-3 slds-small-size_1-of-1">
+                                        <div class="slds-box_x-small slds-text-align_left ">
+                                <lightning:card variant="Narrow">
+                                       <p>Subject: {!cases.Subject}</p>
+                                </lightning:card>
+                        
+                        
+                </div>     
+        </div>
+
+                        </aura:iteration>
+                </div>
+        
+                        <aura:if isTrue="{!v.searchClicked}">
+                        <div style="overflow: hidden;">
+                                        <div class="slds-button slds-col slds-no-flex slds-grid slds-align-right slds-m-right--x-large slds-float_left" style="margin:0 1em;">
+                                            <lightning:button class="slds-m-left_small" label="Previous" disabled="{!v.startPage == 0}" 
+                                                              onclick="{!c.previous}" variant="brand"
+                                                              iconName='utility:back' iconPosition='right'/>
+                                        </div>
+                                       <div class="slds-button slds-col slds-no-flex slds-grid slds-align-right slds-m-right--x-large slds-float_right" style="margin:0 1em;">
+                                           <lightning:button class="slds-m-right_large" label="Next" disabled="{!v.endPage >= v.totalRecords -1}" 
+                                                             onclick="{!c.next}" variant="brand"
+                                                             iconName='utility:forward' iconPosition='right'/>
+                                       </div>   
+                                    </div> 
+                                </aura:if>
+                </lightning:tab>
+
+        </lightning:tabset>
+</aura:component>

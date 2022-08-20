@@ -1,0 +1,29 @@
+<template>
+    <form>
+    <lightning-card title="Create a new enquiry">
+        <div onclick={handleDivOnClick}>
+        <c-display-escalated-enquiries item-name={changingGetter} counter={counter}></c-display-escalated-enquiries>
+    </div>
+        <template if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading" size="small" variant="brand"></lightning-spinner>
+        </template>
+        <lightning-layout multiple-rows>
+            <lightning-layout-item size="12" padding="around-small">
+          <lightning-input label={label.labelEnqName} onchange={handleEnqNameChange}></lightning-input>
+          <lightning-combobox
+          name="enqTypes"
+          value={value}
+          label="Enquiry Type"
+          placeholder="All Types"
+          options={enqTypes} onchange={handleEnqTypesSelect}></lightning-combobox><br>
+          <lightning-input-rich-text label="Enquiry Comments" onchange={handleEnqCommentsChange}></lightning-input-rich-text>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="around-small">
+            <lightning-button class="slds-p-around_xx-small" label="Reset" variant="brand" onclick={handleResetClick} icon-name="utility:clear"></lightning-button>
+            <lightning-button class="slds-p-around_xx-small" label="Save" variant="brand" onclick={handleSaveClick} icon-name="utility:save"></lightning-button>
+        
+        </lightning-layout-item>
+      </lightning-layout>
+    </lightning-card>
+</form>
+</template>
