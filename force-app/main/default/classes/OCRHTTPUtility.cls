@@ -35,17 +35,24 @@ global with sharing class OCRHTTPUtility {
 //String parentRecordId = '5000o00003VgAGAAA3';
 //HTTPUtility.invokeCallOut('POST', 'https://th-apex-http-callout.herokuapp.com/animals', 'accept', requestBody, parentRecordId);
 
-    public static String invokeCallOut(String httpMethod, String endpoint, Object requestBody, String parentRecordId) {
+    public static void invokeCallOut(String httpMethod, String endpoint, Object requestBody, String parentRecordId) {
 
         // Create request
         HttpRequest request = createHTTPRequest(httpMethod, endpoint, requestBody, parentRecordId);
+        HttpResponse response;
+        try{
         //HttpResponse response;
-        HttpResponse response = (new Http()).send(request);
+        response = (new Http()).send(request);
         System.debug('Response body: ' + response.getBody());
+
+        }
+        catch(System.CalloutException e) {  
+            System.debug('Callout error: '+ e); 
+        }
 
         // dml here 
         handleResponse(request, response, parentRecordId);
-        return response.getBody();
+        //return response.getBody();
         
     }
 
@@ -104,14 +111,14 @@ global with sharing class OCRHTTPUtility {
 
     //response wrapper class
     private class SuccessResponseWrapper {
-        Boolean isSuccess;
-        Object data;
+        Boolean isSuccess {get; set;}
+        Object data {get; set;}
     }
 
     //response wrapper class
     private class ErrorResponseWrapper {
-        Boolean isSuccess;
-        String error;
+        Boolean isSuccess {get; set;}
+        String error {get; set;}
     }
 
 
